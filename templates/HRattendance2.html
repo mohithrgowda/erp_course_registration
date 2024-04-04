@@ -1,0 +1,4323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dashboard</title>
+    <link href="./static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!--Tooltip -->
+	
+	<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+	rel = "stylesheet">
+ <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+ <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+ <!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ 
+	<style>
+	.title {
+        display: flex;
+        justify-content: space-between;
+        border-top: 5px solid #969696;
+        height: 30px;
+        line-height: 30px;
+        padding: 5px 15px;
+        font-size: 18px;
+        color: #212121;
+        margin-bottom: 20px;
+      }
+
+	  
+	  .tooltip-wrap {
+			  position: relative;
+			}
+			.tooltip-wrap .tooltip-content {
+			  display: none;
+			  position: absolute;
+			  bottom: 5%;
+			  left: 5%;
+			  right: 5%;
+			  background-color: #fff;
+			  padding: .5em;
+			}
+			.tooltip-wrap:hover .tooltip-content {
+			  display: block;
+			}
+			
+
+	</style>
+</head>
+<body>
+    
+
+    <div class="d-flex flex-column min-vh-100 bg-light">
+
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-white mb-3">
+                <div class="container-fluid">
+                  <a class="navbar-brand text-center py-0" href="#">
+                    <img src="./static/images/logo.png" alt="logo" class="img-fluid w-40">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0" style="float: right!important;">
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="attdashboard">
+                            <i class="fa fa-bar-chart text-danger"></i>  Dashboard
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link bg-danger" aria-current="page" href="login">
+                            <i class="fas fa-sign-out-alt text-white"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
+		<h4>Attendance &amp; Payroll Information</h4>
+		<div class="row title justify-content-end">
+		<span class="col-auto">
+		<!--href="exceldownload"-->
+			<a id="btn_downloadexcel"><img src="./static/images/excel.png" style="width:30px;height:30px;" ></a>
+			<span  style="font-size:15px;">Page : </span>
+			<select id="pgnum" name="pgnum" onchange="pageloader()"  style="font-size:10px;">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+				<option>6</option>
+				<option>7</option>
+				<option>8</option>
+				<option>9</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>13</option>
+				<option>14</option>
+				<option>15</option>
+				<option>16</option>
+				<option>17</option>
+				<option>18</option>
+				<option>19</option>
+				<option>20</option>
+				<option>21</option>
+				<option>22</option>
+				<option>23</option>
+				<option>24</option>
+			</select>
+		</span>
+	</div>
+		<div class="row">
+		<div class="col-lg-3">
+		<div class="col-lg-3" style="float:left;margin-top: 5px;">
+			
+			<span  style="font-size:15px;">Select : </span>
+		</div>
+			
+		<div class="col-lg-3" style="float:left;">
+				<select id="mon" name="mon" class="form-control" onchange="fetchmondata()"  style="font-size:10px;font-weight:bolder;">
+					<option value="1">Jan</option>
+					<option value="2">Feb</option>
+					<option value="3">Mar</option>
+					<option value="4">Apr</option>
+					<option value="5">May</option>
+					<option value="6">Jun</option>
+					<option value="7">Jul</option>
+					<option value="8">Aug</option>
+					<option value="9">Sep</option>
+					<option value="10">Oct</option>
+					<option value="11">Nov</option>
+					<option value="12">Dec</option>
+				</select>
+				
+				
+			</div>
+				
+				
+		<div class="col-lg-3" style="float:left;">
+				<select id="year" name="year" class="form-control"  style="font-size:10px;font-weight:bolder;">
+					<option>2022</option>
+					<option>2021</option>
+				</select>
+		</div>
+				
+		</div>
+				
+		<div class="col-lg-2">
+			<input type="text" id="secode" name="secode" placeholder="Enter Emp code" value="" class="form-control"  style="font-size:10px;font-weight:bolder;"> 
+		</div>
+		<script>
+				//debugger;
+						document.getElementById('mon').value={{monnum}};
+				/*
+						//debugger;
+						const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+						const d = new Date();
+						let name = month[d.getMonth()];
+						let result = name.substr(0, 3);
+						document.getElementById('mon').value=result;
+						*/
+				</script>
+		<div class="col-lg-2">
+				<select id="procnm" name="procnm" class="form-control"  style="font-size:10px;font-weight:bolder;">
+				<option value="">Select Process</option>
+				<option>IT</option>
+				<option>Manager</option>
+				<option>HR</option>
+				<option>Wrogn</option>
+				<option>Admin</option>
+				<option>Training Lead</option>
+				<option>Accounts</option>
+				<option>Team Leader</option>
+				<option>Asst Manager</option>
+				<option>Floor Supervisor</option>
+				<option>3M PI</option>
+				<option>3M Home Care</option>
+				<option>Quality</option>
+				<option>1533</option>
+				<option>Concierge Travel</option>
+				<option>Nova</option>
+				<option>JLR</option>
+				<option>Trainer</option>
+				<option>Sintex</option>
+				<option>BPL</option>
+				<option>MIS</option>
+				<option>BBMP</option>
+				<option>Aster</option>
+				<option>Concierge</option>
+				<option>Kotak</option>
+			</select>
+		</div>
+		
+		
+				
+		<div class="col-lg-2">
+			<select id="mgrnm" name="mgrnm" class="form-control"  style="font-size:10px;font-weight:bolder;">
+				<option value="">Select Manager</option>
+				<option>Abhilasha Saha</option>
+				<option>Anna Sheela P M</option>
+				<option>Bopanna C K</option>
+				<option>Chetan J R</option>
+				<option>Darshan Chinnappa</option>
+				<option>Karthick P</option>
+				<option>Laxman Chavan</option>
+				<option>Venkata Raghavendra V</option>
+				<option>Venuprakash J</option>
+				<option>Vijay Kumar M K</option>
+				<option>Vimitha</option>
+			</select>
+		</div>
+		<div class="col-lg-2" style="margin-top:0px;">
+			<input type="button" value="Fetch" id="btn_searchalldata" style="float:right;" class="btn btn-danger col-lg-12 form-control">
+		</div>
+	</div>
+
+              <div class="container-fluid bg-white flex-fill">
+
+                <div class="row justify-content-center mt-4">
+                  <div class="col-md-12">
+				  
+                      <div class="">
+                          <table class="table table-sm table-bordered"  id="tblData">
+                            <thead class="bg-primary text-white rounded-3 border-primary">
+                             <tr>
+                  <th class="fs-9 text-nowrap">E.Code</th>
+                  <th class="fs-9 text-nowrap">E.Name</th>
+                  <th class="fs-9 text-nowrap">Process</th>
+                  <th class="fs-9 text-nowrap">Asst.Manager</th>
+                  <th class="fs-9 text-nowrap">Manager</th>
+                  <th class="fs-9 text-nowrap">D.O.J</th>
+				  {% for item in datesfinallist %} 
+				  		<th class="fs-9 text-nowrap">{{item}}</th>
+				  {% endfor %}
+
+				  
+                  {% if payrolldata is defined %}
+                    <th class="fs-9 text-nowrap">Tot Hrs</th>
+					<th class="fs-9 text-nowrap">Basic(Rs)</th>
+					<th class="fs-9 text-nowrap">Empr PF cont</th>
+					<th class="fs-9 text-nowrap">Empr ESI cont</th>
+					<th class="fs-9 text-nowrap">Emp PF Cont</th>
+					<th class="fs-9 text-nowrap">Emp ESI Cont</th>
+					<th class="fs-9 text-nowrap">CTC (Rs)</th>
+					<th class="fs-9 text-nowrap">Gross Salary</th>
+					<th class="fs-9 text-nowrap">Tot Present</th>
+					<th class="fs-9 text-nowrap">WO</th>
+					<th class="fs-9 text-nowrap">HD</th>
+					<th class="fs-9 text-nowrap">LHD</th>
+					<th class="fs-9 text-nowrap">NH</th>
+					<th class="fs-9 text-nowrap">LOP</th>
+					<th class="fs-9 text-nowrap">DLOP</th>
+					<th class="fs-9 text-nowrap">CL</th>
+					<th class="fs-9 text-nowrap">SL</th>
+					<th class="fs-9 text-nowrap">AL</th>
+					<th class="fs-9 text-nowrap">Payable Days</th>
+					<th class="fs-9 text-nowrap">Training Days</th>
+					<th class="fs-9 text-nowrap">Salary Per Day</th>
+					<th class="fs-9 text-nowrap">Earned Gross</th>
+					<th class="fs-9 text-nowrap">Travel Allowance</th>
+					<th class="fs-9 text-nowrap">Mobile Bill</th>
+					<th class="fs-9 text-nowrap">Over Time</th>
+					<th class="fs-9 text-nowrap">SLA Adherence</th>
+					<th class="fs-9 text-nowrap">Other Incentives</th>
+					<th class="fs-9 text-nowrap">Arrears</th>
+					<th class="fs-9 text-nowrap">Gross Earnings</th>
+					<th class="fs-9 text-nowrap">Earned Basic</th>
+					<th class="fs-9 text-nowrap">Emp PF Cont</th>
+					<th class="fs-9 text-nowrap">Emp ESI Cont</th>
+					<th class="fs-9 text-nowrap">Empr PF Cont</th>
+					<th class="fs-9 text-nowrap">Empr ESI Cont</th>
+					<th class="fs-9 text-nowrap">Prof TAX</th>
+					<th class="fs-9 text-nowrap">Income TAX</th>
+					<th class="fs-9 text-nowrap">ID Card</th>
+					<th class="fs-9 text-nowrap">Quality Deductions</th>
+					<th class="fs-9 text-nowrap">Advance</th>
+					<th class="fs-9 text-nowrap">Others</th>
+					<th class="fs-9 text-nowrap">Gross Deduction</th>
+					<th class="fs-9 text-nowrap">Net Salary</th>
+					<th class="fs-9 text-nowrap">Account No</th>
+					<th class="fs-9 text-nowrap">Bank Name</th>
+					<th class="fs-9 text-nowrap">Acc Holder Name</th>
+					<th class="fs-9 text-nowrap">Branch Name</th>
+					<th class="fs-9 text-nowrap">IFSC Code</th>
+					<th class="fs-9 text-nowrap">UAN</th>
+					<th class="fs-9 text-nowrap">PF Number</th>
+					<th class="fs-9 text-nowrap">EmpStatus</th>
+					<th class="fs-9 text-nowrap">Base Pay</th>
+					<th class="fs-9 text-nowrap">SL Adherence</th>
+					<th class="fs-9 text-nowrap">CalcSL Adherence</th>
+					
+					{% endif %}
+                </tr>
+				 </thead>
+                <tbody>
+               
+						
+				{% for item in emp_primarydata %} 
+				
+					
+				<tr class="fs-6 text-nowrap">
+					<td>{{item[0]}}</td>
+					<td>{{item[1]}}</td>
+					<td>{{item[5]}}</td>
+					<td>{{item[2]}}</td>
+					<td>{{item[3]}}</td>
+					<td>{{item[4]}}</td>
+					<td align="left" valign=middle id="{{item[0]|string+'16td'}}">
+						
+						{% for val in emp16_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'16'}}"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[0]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--16-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team and (val[18]|string!="WO" and val[18]|string!="CL" and val[18]|string!="LOP") 
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'16td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'16td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'16td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						
+
+					<table id="{{val[2]}}" bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none;">
+						<tbody class="table-primary">
+						<tr class="bg-primary">
+						<td colspan="3" class="text-center text-white">{{item[1]}} ({{item[0]}})</td>
+						
+						</tr>
+						<tr class="bg-primary bg-opacity-10 fs-6 text-nowrap">
+							<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>		
+
+							<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+							
+						</tr>
+						<tr class="bg-primary bg-opacity-10 fs-6 text-nowrap">
+							<td>{{val[12]}}</td>
+							<td>{{val[6]}}</td>
+							<td></td>
+							
+						</tr>
+						<tr class="bg-primary bg-opacity-10 fs-6 text-nowrap">
+						 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+						
+						</tr>
+						<tr class="bg-primary bg-opacity-10 fs-6 text-nowrap">
+						<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+						
+						</tr>
+						<tr class="bg-primary bg-opacity-10 fs-6 text-nowrap">
+						<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+						
+						</tr>
+						<tr class="bg-primary bg-opacity-10 fs-6 text-nowrap">
+						<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+						
+						</tr>
+						<tr class="bg-primary bg-opacity-10 fs-6 text-nowrap">
+						<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+						
+						</tr>
+						<tr class="bg-primary bg-opacity-10 fs-6 text-nowrap">
+						<td colspan="3"> {{val[15]}}</td>
+						
+						</tr>
+						<tr>
+						 <td colspan="3">Comment : {{val[19]}} </td>
+						 
+						</tr>
+				</tbody></table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'16'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+						
+						
+					$(function () {
+
+
+
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'17td'}}">
+							
+						{% for val in emp17_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'17'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[1]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--17-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"  %}
+					
+						$( "#{{item[0]|string+'17td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"   %}				  
+						$( "#{{item[0]|string+'17td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"   %}				  
+						$( "#{{item[0]|string+'17td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'17'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'18td'}}">
+							
+						{% for val in emp18_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'18'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[2]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--18-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'18td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'18td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'18td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'18'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'19td'}}">
+							
+						{% for val in emp19_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'19'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[3]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--19-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'19td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'19td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'19td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'19'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'20td'}}">
+						
+						{% for val in emp20_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'20'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[4]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--20-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'20td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'20td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'20td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'20'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					
+					
+					<td align="left" valign=middle id="{{item[0]|string+'21td'}}">
+							
+						{% for val in emp21_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'21'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[5]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--21-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'21td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'21td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'21td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'21'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					
+					<td align="left" valign=middle id="{{item[0]|string+'22td'}}">
+							
+						{% for val in emp22_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'22'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[6]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--22-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'22td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'22td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'22td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'22'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'23td'}}">
+						{% for val in emp23_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'23'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[7]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--23-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'23td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'23td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'23td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'23'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'24td'}}">
+							{% for val in emp24_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'24'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[8]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--24-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'24td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'24td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'24td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'24'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'25td'}}">
+							{% for val in emp25_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'25'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[9]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--25-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'25td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'25td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'25td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'25'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					</td>
+					
+					<td align="left" valign=middle id="{{item[0]|string+'26td'}}">
+					<!--26-->
+					{% for val in emp26_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'26'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[10]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'26td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'26td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'26td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'26'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					
+					
+					<td align="left" valign=middle id="{{item[0]|string+'27td'}}">
+					<!--27-->
+					{% for val in emp27_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'27'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[11]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+						
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'27td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'27td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'27td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							
+						$( '#'+{{item[0]|string+'27'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					
+						
+				
+					
+					
+					<td align="left" valign=middle id="{{item[0]|string+'28td'}}">
+					<!--28-->
+					{% for val in emp28_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'28'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[12]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					<!--<input type="hidden" data-ecode="{{val[0]}}" />
+					<input type="hidden" data-adate="28-11-2021" />
+					<input type="hidden" data-astat="{{val[18]}}" />-->
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'28td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'28td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'28td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+					
+					/*$(document).ready(function(){
+							//debugger;
+						$( '#'+{{item[0]|string+'28'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+					});*/
+					
+						$( '#'+{{item[0]|string+'28'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+					/*  $( '#'+{{item[0]|string+'28'}}+'' ).attr('title', 
+						$('#'+{{val[2]}}+'').html());
+						
+						$('#'+{{item[0]|string+'28'}}+'').hover(function(ev){
+							$('#'+{{val[2]}}+'').stop(true,true).fadeIn(); 
+						},function(ev){
+							$('#'+{{val[2]}}+'').stop(true,true).fadeOut();
+						}).mousemove(function(ev){
+							$('#'+{{val[2]}}+'').css({left:ev.layerX+10,top:ev.layerY+10});
+						});*/
+					
+					
+					
+					/*$(function(){
+						$('#'+{{item[0]|string+'28'}}+'').on("click",function(){
+						//debugger;
+						$("#exampleModal").modal("show");
+						})
+					})*/
+					
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+					
+	
+						/*
+						$('#'+{{item[0]|string+'28'}}+'').click(function(){
+						window.open('https://transactglobalhrmsnew.herokuapp.com/attendanceedit?Date=28-10-2021&Ecode={{val[0]}}&Atype={{val[18]}}','popup','width=600,height=600,scrollbars=no,resizable=no'); 
+						return false;
+						
+						});
+						*/
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					
+					
+					{% if datescount>28 %}
+					<td align="left" valign=middle id="{{item[0]|string+'29td'}}">
+					<!--29-->
+					{% for val in emp29_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'29'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="29-10-2021" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'29td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'29td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'29td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'29'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+						
+					
+					<td align="left" valign=middle id="{{item[0]|string+'30td'}}">
+					<!--30-->
+					{% for val in emp30_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'30'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="30-10-2021" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'30td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'30td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'30td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+	
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'30'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+	
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+						
+				
+					{% if datescount==31 %}
+					<td align="left" valign=middle id="{{item[0]|string+'31td'}}">
+					<!--31-->
+					{% for val in emp31_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'31'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="31-10-2021" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'31td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'31td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'31td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+	
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'31'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+	
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					{% endif %}	
+					
+					{% endif %}
+					
+				
+					<td align="left" valign=middle id="{{item[0]|string+'1td'}}">
+					<!--1-->
+					{% for val in emp1_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'1'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[13]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'1td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'1td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'1td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'1'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+	
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'2td'}}">
+					<!--2-->
+					{% for val in emp2_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'2'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[14]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'2td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'2td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'2td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'2'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'3td'}}">
+					<!--3-->
+					{% for val in emp3_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'3'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[15]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'3td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'3td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'3td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'3'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'4td'}}">
+					<!--4-->
+					{% for val in emp4_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'4'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[16]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'4td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'4td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'4td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'4'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'5td'}}">
+					<!--5-->
+					{% for val in emp5_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'5'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[17]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'5td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'5td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'5td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'5'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+						
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'6td'}}">
+					<!--6-->
+					{% for val in emp6_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'6'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[18]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'6td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'6td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'6td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'6'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'7td'}}">
+					<!--7-->
+					{% for val in emp7_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					<a href="#exampleModal"  id="{{item[0]|string+'7'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[19]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'7td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'7td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'7td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'7'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					
+					
+					
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'8td'}}">
+							
+						{% for val in emp8_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'8'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[20]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--8-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'8td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'8td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'8td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'8'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'9td'}}">
+							
+						{% for val in emp9_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'9'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[21]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--9-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'9td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'9td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'9td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'9'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'10td'}}">
+							
+						{% for val in emp10_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'10'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[22]}}"data-astat="{{val[18]}}">
+					
+							<!--10-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'10td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'10td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'10td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'10'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'11td'}}">
+							
+						{% for val in emp11_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'11'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[23]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--11-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'11td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'11td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'11td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'11'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'12td'}}">
+							
+						{% for val in emp12_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'12'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[24]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--12-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'12td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'12td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'12td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'12'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'13td'}}">
+							
+						{% for val in emp13_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'13'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[25]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--13-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'13td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'13td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'13td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'13'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'14td'}}">
+							
+						{% for val in emp14_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'14'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[26]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--14-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'14td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'14td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'14td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'14'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					<td align="left" valign=middle id="{{item[0]|string+'15td'}}">
+								
+						{% for val in emp15_attdata %}
+						{% if val[0]|string==item[0]|string %}
+					
+					<a href="#exampleModal"  id="{{item[0]|string+'15'}}" title="hover tooltip"  data-toggle="modal" data-target="#exampleModal" data-ecode="{{val[0]}}" data-adate="{{datesfinallist[27]}}" data-astat="{{val[18]}}" data-sst="{{val[7]}}">
+					
+							<!--15-->
+					{{val[18]}}
+					
+					</a>
+					<script>
+					//HR Team
+						{% if val[4]|string=="50"   %}
+					
+						$( "#{{item[0]|string+'15td'}}" ).css('background-color', '#AAAAFA');
+						{% endif %}
+						
+						//Admin					
+						{% if val[4]|string=="1"  %}				  
+						$( "#{{item[0]|string+'15td'}}" ).css('background-color', '#aaa7a3');					 
+						{% endif %}
+						
+						//HR-Head
+						{% if val[4]|string=="2"  %}				  
+						$( "#{{item[0]|string+'15td'}}" ).css('background-color', '#ccffcc');					 
+						{% endif %}
+						
+	
+					</script>
+						<table id="{{val[2]}}"  bordercolor="black" cellpadding="15px" cellspacing="1" style="width: 100%;display:none; ">
+							<tr>
+							<td colspan="3">{{item[1]}} ({{item[0]}})</td>
+							
+							</tr>
+							<tr >
+								<th style="color:black;font-size:12px;font-weight:bolder;">Logged Hours</th>
+								<th style="color:black;font-size:12px;font-weight:bolder;">Shift Id</th>
+								<th></th>
+								
+								
+							</tr>
+							<tr style="background-color: rgb(250, 242, 242);color:rgb(12, 11, 11);">
+								<td>{{val[12]}}</td>
+								<td>{{val[6]}}</td>
+								<td></td>
+								
+							</tr>
+							<tr>
+							 <td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift Start Time : {{val[7]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Shift End Time : {{val[8]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Login Time : {{val[10]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">Log Off Time : {{val[11]}}</td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">System: {{val[14]}} </td>
+							
+							</tr>
+							<tr>
+							<td colspan="3" style="color:black;font-size:12px;font-weight:bolder;">{{val[15]}} </td>
+							
+							</tr>
+					</table>
+		
+		
+					<script>
+							$( '#'+{{item[0]|string+'15'}}+'' ).tooltip({ content: $('#'+{{val[2]}}+'').html() });
+	
+	
+						
+					$(function () {
+						$('#exampleModal').on('show.bs.modal', function (event) {
+							//debugger;
+							var button = $(event.relatedTarget); // Button that triggered the modal
+							var code = button.data('ecode'); // Extract info from data-* attributes
+							var adate = button.data('adate'); // Extract info 
+							var astat = button.data('astat'); var sst = button.data('sst'); 
+							//from data-* attributes
+							// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+							// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+							var modal = $(this);
+							modal.find('#ecode').val(code);
+							modal.find('#adate').val(adate);
+							modal.find('#astatus').val(astat);modal.find('#attstat').val(astat);modal.find('#sst').val(sst);modal.find('#loggeduser').val("{{session['name']}}");
+						});
+						});
+	
+					</script>
+					
+						{% endif %}				 
+					{% endfor %}
+					</td>
+					
+					{% if payrolldata is defined %}
+					<td>{{payrolldata[loop.index - 1][1]}}</td>
+					<td>{{payrolldata[loop.index - 1][2]}}</td>
+					<td>{{payrolldata[loop.index - 1][3]}}</td>
+					<td>{{payrolldata[loop.index - 1][4]}}</td>
+					<td>{{payrolldata[loop.index - 1][5]}}</td>
+					<td>{{payrolldata[loop.index - 1][6]}}</td>
+					<td>{{payrolldata[loop.index - 1][7]}}</td>
+					<td>{{payrolldata[loop.index - 1][8]}}</td>
+					<td>{{payrolldata[loop.index - 1][9]}}</td>
+					<td>{{payrolldata[loop.index - 1][10]}}</td>
+					<td>{{payrolldata[loop.index - 1][11]}}</td>
+					<td>{{payrolldata[loop.index - 1][12]}}</td>
+					<td>{{payrolldata[loop.index - 1][13]}}</td>
+					<td>{{payrolldata[loop.index - 1][14]}}</td>
+					<td>{{payrolldata[loop.index - 1][15]}}</td>
+					<td>{{payrolldata[loop.index - 1][16]}}</td>
+					<td>{{payrolldata[loop.index - 1][17]}}</td>
+					<td>{{payrolldata[loop.index - 1][18]}}</td>
+					<td>{{payrolldata[loop.index - 1][19]}}</td>
+					<td>{{payrolldata[loop.index - 1][20]}}</td>
+					<td>{{payrolldata[loop.index - 1][21]}}</td>
+					<td>{{payrolldata[loop.index - 1][22]}}</td>
+					<td>{{payrolldata[loop.index - 1][23]}}</td>
+					<td>{{payrolldata[loop.index - 1][24]}}</td>
+					<td>{{payrolldata[loop.index - 1][25]}}</td>
+					<td>{{payrolldata[loop.index - 1][26]}}</td>
+					<td>{{payrolldata[loop.index - 1][27]}}</td>
+					<td>{{payrolldata[loop.index - 1][28]}}</td>
+					<td>{{payrolldata[loop.index - 1][29]}}</td>
+					<td>{{payrolldata[loop.index - 1][30]}}</td>
+					<td>{{payrolldata[loop.index - 1][31]}}</td>
+					<td>{{payrolldata[loop.index - 1][32]}}</td>
+					<td>{{payrolldata[loop.index - 1][33]}}</td>
+					<td>{{payrolldata[loop.index - 1][34]}}</td>
+					<td>{{payrolldata[loop.index - 1][35]}}</td>
+					<td>{{payrolldata[loop.index - 1][36]}}</td>
+					<td>{{payrolldata[loop.index - 1][37]}}</td>
+					<td>{{payrolldata[loop.index - 1][38]}}</td>
+					<td>{{payrolldata[loop.index - 1][39]}}</td>
+					<td>{{payrolldata[loop.index - 1][40]}}</td>
+					<td>{{payrolldata[loop.index - 1][41]}}</td>
+					<td>{{payrolldata[loop.index - 1][42]}}</td>
+					<td>{{payrolldata[loop.index - 1][43]}}</td>
+					<td>{{payrolldata[loop.index - 1][44]}}</td>
+					<td>{{payrolldata[loop.index - 1][45]}}</td>
+					<td>{{payrolldata[loop.index - 1][46]}}</td>
+					<td>{{payrolldata[loop.index - 1][47]}}</td>
+					<td>{{payrolldata[loop.index - 1][48]}}</td>
+					<td>{{payrolldata[loop.index - 1][49]}}</td>
+					<td>{{payrolldata[loop.index - 1][50]}}</td>
+					<td>{{payrolldata[loop.index - 1][51]}}</td>
+					<td>{{payrolldata[loop.index - 1][52]}}</td>
+					<td>{{payrolldata[loop.index - 1][53]}}</td>
+					
+				{% endif %}  
+					
+					
+					</tr>
+						
+			  	{% endfor %}  
+			   
+				
+				
+		
+<!--LHD Color Scripts -->	
+<!--Absent Scripts -->	
+		   
+<script>
+	////debugger;    
+	let rowcounter=0;
+	debugger;
+	for (let row of tblData.rows) 
+	{
+		let tot_Present=0;
+		let wo_Count=0;
+		let hd_Count=0;
+		let lhd_Count=0;
+		let nh_Count=0;
+		let lop_Count=0;
+		let dlop_Count=0;
+		let cl_Count=0;
+		let sl_Count=0;
+		let al_Count=0;
+		let abs_Count=0;
+		let tg_Count=0;
+		let counter=0;
+		let cellcounter=0;
+		let salperday=0;
+		let grosssal=0;
+		let cgrosssal=0;
+		let erndgrosssal=0;
+		let grdeduc=0;
+		let netsal=0;
+
+		//perks & Expenses
+		let trallow=0;
+		let mobbill=0;
+		let overtime=0;
+		let slaadher=0;
+		let othinc=0;
+		let arrears=0;
+
+		if(rowcounter>0)
+		{
+		for(let cell of row.cells) 
+		{
+			debugger;
+			if(cellcounter<37 && cellcounter>5)
+			{
+				if(cell.innerText=="")
+				{
+					if(cellcounter>5)
+					{
+						cell.innerText="SN";
+						abs_Count=abs_Count+1;
+					}
+				}
+				
+				if(cell.innerText=="A")
+				{
+					abs_Count=abs_Count+1;
+				}
+				
+				if(cell.innerText=="P")
+				{
+					tot_Present=tot_Present+1;
+				}
+				if(cell.innerText=="TG")
+				{
+					tg_Count=tg_Count+1;
+				}
+				if(cell.innerText=="WO")
+				{
+					wo_Count=wo_Count+1;
+				}
+				if(cell.innerText=="HD")
+				{
+					hd_Count=hd_Count+1;
+				}
+				if(cell.innerText=="LHD")
+				{
+					lhd_Count=lhd_Count+1;
+				}
+				if(cell.innerText=="NH")
+				{
+					nh_Count=nh_Count+1;
+				}
+				if(cell.innerText=="LOP")
+				{
+					lop_Count=lop_Count+1;
+				}
+				if(cell.innerText.trim()=="DLOP")
+				{
+					dlop_Count=dlop_Count+1;
+				}
+				if(cell.innerText=="CL")
+				{
+					cl_Count=cl_Count+1;
+				}
+				if(cell.innerText=="SL")
+				{
+					sl_Count=sl_Count+1;
+				}
+				if(cell.innerText=="AL")
+				{
+					al_Count=al_Count+1;
+				}
+				if(cell.innerText=="LHD" && counter<3)
+				{
+					cell.style.backgroundColor = "#F5A9E1";
+					counter=counter+1;
+				}
+			}
+			//Datescount=28
+			{% if datescount==28 %}
+			if(cellcounter==41 && rowcounter!=0)
+			{
+				grosssal=cell.innerText;
+			}
+			if(cellcounter==42 && rowcounter!=0)
+			{
+				//debugger;
+				if(lhd_Count<=3)
+				{
+					cell.innerText=tot_Present+lhd_Count;
+					tot_Present=tot_Present+lhd_Count;
+					lhd_Count=0;
+				}
+				else{	
+					cell.innerText=tot_Present+3;	
+					tot_Present=tot_Present+3;			
+					lhd_Count=lhd_Count-3;
+				}
+			}
+			
+			if(cellcounter==43 && rowcounter!=0)
+			{
+				cell.innerText=wo_Count;
+			}
+			
+			if(cellcounter==44 && rowcounter!=0)
+			{
+				cell.innerText=hd_Count;
+			}
+			
+			if(cellcounter==45 && rowcounter!=0)
+			{
+				cell.innerText=lhd_Count;
+			}
+			
+			if(cellcounter==46 && rowcounter!=0)
+			{
+				cell.innerText=nh_Count;
+			}
+			
+			if(cellcounter==47 && rowcounter!=0)
+			{
+				cell.innerText=lop_Count;
+			}
+			
+			if(cellcounter==48 && rowcounter!=0)
+			{
+				cell.innerText=dlop_Count;
+			}
+			
+			if(cellcounter==49 && rowcounter!=0)
+			{
+				cell.innerText=cl_Count;
+			}
+			
+			if(cellcounter==50 && rowcounter!=0)
+			{
+				cell.innerText=sl_Count;
+			}
+			
+			if(cellcounter==51 && rowcounter!=0)
+			{
+				cell.innerText=al_Count;
+			}
+			
+			if(cellcounter==52 && rowcounter!=0)
+			{
+			//debugger;
+				var calcval=(tot_Present+ wo_Count+ nh_Count+ cl_Count+ sl_Count+ al_Count+ tg_Count);
+				calcval=calcval+(hd_Count*0.5);
+				//if(lhd_Count>3)
+				{
+					var dc=lhd_Count;
+					calcval=calcval+(dc*0.5);
+					//calcval=calcval+3;
+				}
+				/*
+				else
+				{
+					calcval=calcval+lhd_Count;
+				}*/
+				calcval=calcval-lop_Count;
+				calcval=calcval-(dlop_Count*2);
+				cell.innerText=calcval;
+			}
+			
+			if(cellcounter==53 && rowcounter!=0)
+			{
+				cell.innerText=tg_Count;
+			}	
+			
+			if(cellcounter==54 && rowcounter!=0)
+			{
+				salperday=parseFloat(grosssal)/{{datescount}};
+				cell.innerText=Math.round(salperday);
+				 //salperday=cell.innerText;
+			}
+			if(cellcounter==55 && rowcounter!=0)
+			{
+				//debugger;
+				var calcval=(tot_Present+ wo_Count+ nh_Count+ cl_Count+ sl_Count+ al_Count+ tg_Count);
+				calcval=calcval+(hd_Count*0.5);
+				//if(lhd_Count>3)
+				{
+					//var dc=lhd_Count-3;
+					calcval=calcval+(lhd_Count*0.5);
+					//calcval=calcval+3;
+				}
+				//else
+				//{
+					//calcval=calcval+lhd_Count;
+				//}
+				calcval=calcval-lop_Count;
+				calcval=calcval-(dlop_Count*2);
+				cgrosssal=Math.round(calcval*parseFloat(salperday));
+				cell.innerText=Math.round(calcval*parseFloat(salperday));
+			}
+			if(cellcounter==56 && rowcounter!=0)
+			{
+				trallow=Math.round(parseFloat(cell.innerText));
+			}	
+			if(cellcounter==57 && rowcounter!=0)
+			{
+				mobbill=Math.round(parseFloat(cell.innerText));
+			}
+			if(cellcounter==58 && rowcounter!=0)
+			{
+				overtime=Math.round(parseFloat(cell.innerText));
+			}
+			if(cellcounter==59 && rowcounter!=0)
+			{
+				slaadher=Math.round(parseFloat(cell.innerText));
+			}
+			if(cellcounter==60 && rowcounter!=0)
+			{
+				othinc=Math.round(parseFloat(cell.innerText));
+			}
+			if(cellcounter==61 && rowcounter!=0)
+			{
+				arrears=Math.round(parseFloat(cell.innerText));
+			}
+
+			if(cellcounter==62 && rowcounter!=0)
+			{
+				erndgrosssal=cgrosssal+arrears;	
+				erndgrosssal=cgrosssal+trallow+mobbill+overtime+slaadher+othinc;				
+				cell.innerText=erndgrosssal;
+			}
+			if(cellcounter==74 && rowcounter!=0)
+			{
+				grdeduc=Math.round(parseFloat(cell.innerText));			
+				
+			}
+			if(cellcounter==75 && rowcounter!=0)
+			{
+				netsal=erndgrosssal-grdeduc;
+				cell.innerText=netsal;			
+				
+			}
+			{% endif %}	
+
+
+
+
+			//Datescount=31
+			{% if datescount==31 %}
+			if(cellcounter==44 && rowcounter!=0)
+			{
+				grosssal=cell.innerText;
+			}
+			if(cellcounter==45 && rowcounter!=0)
+			{
+				//debugger;
+				if(lhd_Count<=3)
+				{
+					cell.innerText=tot_Present+lhd_Count;
+					tot_Present=tot_Present+lhd_Count;
+					lhd_Count=0;
+				}
+				else{	
+					cell.innerText=tot_Present+3;	
+					tot_Present=tot_Present+3;			
+					lhd_Count=lhd_Count-3;
+				}
+			}
+			
+			if(cellcounter==46 && rowcounter!=0)
+			{
+				cell.innerText=wo_Count;
+			}
+			
+			if(cellcounter==47 && rowcounter!=0)
+			{
+				cell.innerText=hd_Count;
+			}
+			
+			if(cellcounter==48 && rowcounter!=0)
+			{
+				cell.innerText=lhd_Count;
+			}
+			
+			if(cellcounter==49 && rowcounter!=0)
+			{
+				cell.innerText=nh_Count;
+			}
+			
+			if(cellcounter==50 && rowcounter!=0)
+			{
+				cell.innerText=lop_Count;
+			}
+			
+			if(cellcounter==51 && rowcounter!=0)
+			{
+				cell.innerText=dlop_Count;
+			}
+			
+			if(cellcounter==52 && rowcounter!=0)
+			{
+				cell.innerText=cl_Count;
+			}
+			
+			if(cellcounter==53 && rowcounter!=0)
+			{
+				cell.innerText=sl_Count;
+			}
+			
+			if(cellcounter==54 && rowcounter!=0)
+			{
+				cell.innerText=al_Count;
+			}
+			
+			if(cellcounter==55 && rowcounter!=0)
+			{
+			//debugger;
+				var calcval=(tot_Present+ wo_Count+ nh_Count+ cl_Count+ sl_Count+ al_Count+ tg_Count);
+				calcval=calcval+(hd_Count*0.5);
+				//if(lhd_Count>3)
+				{
+					var dc=lhd_Count;
+					calcval=calcval+(dc*0.5);
+					//calcval=calcval+3;
+				}
+				/*
+				else
+				{
+					calcval=calcval+lhd_Count;
+				}*/
+				calcval=calcval-lop_Count;
+				calcval=calcval-(dlop_Count*2);
+				cell.innerText=calcval;
+			}
+			
+			if(cellcounter==56 && rowcounter!=0)
+			{
+				cell.innerText=tg_Count;
+			}	
+			
+			if(cellcounter==57 && rowcounter!=0)
+			{
+				salperday=parseFloat(grosssal)/{{datescount}};
+				cell.innerText=Math.round(salperday);
+				 //salperday=cell.innerText;
+			}
+			if(cellcounter==58 && rowcounter!=0)
+			{
+				//debugger;
+				var calcval=(tot_Present+ wo_Count+ nh_Count+ cl_Count+ sl_Count+ al_Count+ tg_Count);
+				calcval=calcval+(hd_Count*0.5);
+				//if(lhd_Count>3)
+				{
+					//var dc=lhd_Count-3;
+					calcval=calcval+(lhd_Count*0.5);
+					//calcval=calcval+3;
+				}
+				//else
+				//{
+					//calcval=calcval+lhd_Count;
+				//}
+				calcval=calcval-lop_Count;
+				calcval=calcval-(dlop_Count*2);
+				cgrosssal=Math.round(calcval*parseFloat(salperday));
+				cell.innerText=Math.round(calcval*parseFloat(salperday));
+			}
+			if(cellcounter==59 && rowcounter!=0)
+			{
+				trallow=Math.round(parseFloat(cell.innerText));
+			}	
+			if(cellcounter==60 && rowcounter!=0)
+			{
+				mobbill=Math.round(parseFloat(cell.innerText));
+			}
+			if(cellcounter==61 && rowcounter!=0)
+			{
+				overtime=Math.round(parseFloat(cell.innerText));
+			}
+			if(cellcounter==62 && rowcounter!=0)
+			{
+				slaadher=Math.round(parseFloat(cell.innerText));
+			}
+			if(cellcounter==63 && rowcounter!=0)
+			{
+				othinc=Math.round(parseFloat(cell.innerText));
+			}
+			if(cellcounter==64 && rowcounter!=0)
+			{
+				arrears=Math.round(parseFloat(cell.innerText));
+			}
+
+			if(cellcounter==65 && rowcounter!=0)
+			{
+				erndgrosssal=cgrosssal+arrears;	
+				erndgrosssal=cgrosssal+trallow+mobbill+overtime+slaadher+othinc;				
+				cell.innerText=erndgrosssal;
+			}
+			if(cellcounter==77 && rowcounter!=0)
+			{
+				grdeduc=Math.round(parseFloat(cell.innerText));			
+				
+			}
+			if(cellcounter==78 && rowcounter!=0)
+			{
+				netsal=erndgrosssal-grdeduc;
+				cell.innerText=netsal;			
+				
+			}
+			{% endif %}	
+			
+			cellcounter=cellcounter+1;
+		}
+		}
+		
+		rowcounter++;
+		
+	}
+	
+	
+	
+	/*$('#tblData tr').each(function(){
+    $(this).find('td').each(function(){
+        //do your stuff, you can use $(this) to get current cell
+    })
+})
+
+
+
+
+	
+	var table = document.getElementById('tblData'), 
+		rows = table.getElementsByTagName('tr'),
+		i, j, cells, customerId;
+	
+	
+	//for (i = 0, j = rows.length; i < j; ++i)
+
+	for (i = 0; i < rows.length; i++) {
+		cells = rows[i].getElementsByTagName('td');
+		var counter=0;
+		if (!cells.length) {
+			continue;
+		}
+		//rowval=cells[i].getElementsByTagName('a');
+		//customerId = cells[0].innerHTML;
+		
+		for (j = 0; j < cells.length; j++)
+		{
+			try {
+					var cellval=cells[j].lastElementChild.innerHTML;
+					alert(cellval);
+					if(cellval=="LHD" && counter<3)
+					{
+						cells[j].style.backgroundColor = "#F5A9E1";
+						counter=counter+1;
+					}
+				}
+			catch(err) {
+				console.log('ddd');
+			  }
+		}
+			
+	}
+	*/
+</script>
+   
+		</tbody>
+              </table>
+
+
+
+			  <div class="modal fade" id="modal-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        qwerty
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+			  <div class="modal fade" id="exampleModal">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+		  <!--
+            <div class="modal-header">
+              <h4 class="modal-title">Attendance Editing Page</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>-->
+            <div class="modal-body">
+			
+			<form id="atupdate" method="post" enctype="multipart/form-data">
+              <h2 class="text-center">Attendance Editing Page</h2>
+              <hr>
+              <div class="row mb-1">
+                <div class="col-sm-6">
+                <label for="employee_code" class="form-label fw-bold">Employee Code:</label>
+                <input type="text" name="ecode" id="ecode" class="form-control shadow-none" readonly>  
+                </div>
+                <div class="col-sm-6">
+                <label for="attendance_date" class="form-label fw-bold">Attendance Date:</label>
+                <input type="text" name="adate" id="adate" class="form-control shadow-none" readonly>  
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-sm-6">
+                <label for="attendance_status" class="form-label fw-bold">Attendance Status:</label>
+                <select name="astatus" id="astatus" class="form-control shadow-none">
+					<option>P</option>	
+					<option>DLOP</option>						
+					<option>HD</option>					
+					<option>A</option>						
+					<!--					
+					<option>LHD</option>										
+					<option>LOP</option>						
+					<option>SN</option>			
+					<option>QT</option>	
+					<option>WO</option>						
+					<option>TG</option>
+					-->					
+                </select>  
+                </div>
+                <div class="col-sm-6">
+                <label for="logged_in_as" class="form-label fw-bold">Logged In As:</label>
+                <input type="text" name="ras" id="ras" class="form-control shadow-none" value="{{userrole}}" readonly>  
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-sm-12">
+                <label for="comments" class="form-label fw-bold">Comments:</label>
+                <textarea name="comments" id="comments" rows="3" class="form-control shadow-none"></textarea> 
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-sm-12">
+                <label for="proof_upload" class="form-label fw-bold">Proof Upload:</label>				
+				<input type="file" class="form-control shadow-none" id="prod_mas" name="prod_mas" accept=".jpg,.png" />
+                </div>
+              </div>
+			  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary"  data-dismiss="modal">Close</button>
+              <button type="button" id="attupdate_btnsubmit" class="btn btn-success">Update Attendance</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+                      </div>
+                  </div>
+                </div>
+
+              </div>
+
+
+    </div>
+
+
+	<script>
+/*
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} */
+</script>
+
+
+		
+<script>
+
+	//Pagination
+	function pageloader()
+	{
+		var pnum=document.getElementById('pgnum').value;
+		var monnum=document.getElementById('mon').value;
+		window.location='paginationload?pgnum='+pnum+'&month='+monnum;
+	}
+	
+	//debugger;
+	const urlParams = new URLSearchParams(window.location.search);
+	const myParam = urlParams.get('pgnum');
+	const month = urlParams.get('month');
+	const year = urlParams.get('year');
+	const secode = urlParams.get('secode');
+	const procnm = urlParams.get('procnm');
+	const mgrnm = urlParams.get('mgrnm');
+	if(myParam!=null)
+	{
+		document.getElementById('pgnum').value=myParam;
+	}
+	if(month!=null)
+	{
+		document.getElementById('mon').value=month;
+	}
+	if(secode!=null)
+	{
+		document.getElementById('secode').value=secode;
+	}
+	if(procnm!=null)
+	{
+		document.getElementById('procnm').value=procnm;
+	}
+	if(mgrnm!=null)
+	{
+		document.getElementById('mgrnm').value=mgrnm;
+	}
+	if(year!=null)
+	{
+		document.getElementById('year').value=year;
+	}
+	
+			
+				
+			
+			
+</script>
+
+<script src="{{ url_for('static', filename='restapi.js') }}"></script>
+ <script src="js/bootstrap.js"></script>
+</body>
+</html>

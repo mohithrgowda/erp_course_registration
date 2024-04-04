@@ -1,0 +1,61 @@
+body
+{
+font-family: sans-serif;
+background-image:url('/static/photos/04.jpg');
+background-size: cover;
+}
+#man
+{
+	background-color:yellow
+}
+
+.inputbox
+{
+	background-image:url('/ststic/photos/04.jpg');
+    border-style: solid;
+    background-color: #22fcdf;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top:50%;
+    left: 50%;
+    width: 500px;
+    box-sizing: content-box;
+    border-radius: 20px;
+	box-shadow: 0 15px 25px rgba(0,0,0,.5);
+}
+.inputbox label
+{
+    
+    padding: 10px 0;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 1px;
+    pointer-events: none;
+    transition: .5s;
+}
+.inputbox input[type="button"]
+{
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #03a9f4;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+ 
+
+}
+.inputbox input[type="file"]
+{
+    background: transparent;
+    border: none;
+    outline: none;
+    color:black ;
+    background: rgb(38, 216, 201);
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+ 
+
+}

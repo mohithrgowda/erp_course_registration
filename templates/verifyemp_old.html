@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TransactGlobal | Dashboard</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./static/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+ <!--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <!-- Tempusdominus Bootstrap 4 -->
+ <!--  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"> -->
+  <!-- iCheck -->
+  <!--  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
+ <!--  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css"> -->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="./static/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <!-- <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css"> -->
+  <!-- summernote -->
+  <link rel="stylesheet" href="./static/plugins/summernote/summernote-bs4.min.css">
+  
+  
+ 
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+ 
+ <!-- <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" /> 
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+ <!--<link href="/resources/demos/style.css" rel="stylesheet" /> -->
+ 
+ 
+ 
+ 
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="./static/plugins/fontawesome-free/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="./static/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="./static/plugins/toastr/toastr.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  
+  <style>
+    table, th, td {
+              border:2px solid black;
+              text-align: center;            
+
+            }
+            th{
+              background-color: #234027;
+              color:white;
+              text-align: center;
+			  min-width:100px;
+              
+            }
+
+            .divScroll {
+              padding-left:1% ;
+			/*overflow:scroll;*/
+			width: 1200px;
+			  height: 600px;
+			}
+
+
+
+
+			.tooltip-wrap {
+			  position: relative;
+			}
+			.tooltip-wrap .tooltip-content {
+			  display: none;
+			  position: absolute;
+			  bottom: 5%;
+			  left: 5%;
+			  right: 5%;
+			  background-color: #fff;
+			  padding: .5em;
+			}
+			.tooltip-wrap:hover .tooltip-content {
+			  display: block;
+			}
+			
+			
+			
+
+.title {
+        display: flex;
+        justify-content: space-between;
+        border-top: 5px solid #969696;
+        height: 30px;
+        line-height: 30px;
+        padding: 5px 15px;
+        font-size: 18px;
+        color: #212121;
+        margin-bottom: 20px;
+      }
+
+
+</style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="./static/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand navbar-white navbar-light" style="background-color: #ded5d5;">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="attdashboard" class="nav-link">Dashboard</a>
+      </li>
+     
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="login" class="nav-link">Logout</a>
+      </li>
+    </ul>
+
+    
+  </nav>
+  <!-- /.navbar -->
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="">
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="col-sm-12">
+	<div class="row title" >
+		<h1 class="text-center" style="font-weight:bolder;">Employee Information</h1>
+	</div>
+	<br/>
+<h5 style="font-weight:bolder;color:blue;">Basic Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-8">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Employee Id :
+				<input type="text" id="empid" name="empid" placeholder="Enter Emp code" value="{{emp_primarydata[0][1]}}"  class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Employee Name:
+				<input type="text" id="ename" name="ename" readonly placeholder="Enter Emp name" value="{{emp_primarydata[0][2]}}"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Gender:					
+				<input type="text" id="gender" name="gender" readonly placeholder="Enter Emp name" value="{{emp_primarydata[0][3]}}"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				D.O.B:
+				<input type="text" id="edob" name="edob" value="{{emp_primarydata[0][4]}}"  class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Email:					
+				<input type="text" id="email" name="email" placeholder="Email" value="{{emp_primarydata[0][5]}}"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Mobile:					
+				<input type="text" id="phone" name="phone" placeholder="Phone"  value="{{emp_primarydata[0][6]}}"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Landline:					
+				<input type="text" id="landline" name="landline" placeholder="Landline"  value="{{emp_primarydata[0][7]}}"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Blood Group:		
+					
+				<input type="text" id="bgroup" name="bgroup" placeholder="Landline"  value="{{emp_primarydata[0][8]}}"   class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				System Name:					
+				<input type="text" id="sname" name="sname" readonly  value="{{emp_primarydata[0][9]}}"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Employee Category:		
+				<input type="text" id="ecat" name="ecat" readonly  value="{{emp_primarydata[0][10]}}"   class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Emergency Contact Name:					
+				<input type="text" id="emeconname" name="emeconname"  value="{{emp_primarydata[0][11]}}" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Emergency Contact #:	
+				<input type="text" id="emeconph" name="emeconph" value="{{emp_primarydata[0][12]}}" class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Father Name:					
+				<input type="text" id="fname" name="fname"  value="{{emp_primarydata[0][13]}}" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Father DOB:	
+				<input type="text" id="fdob" name="fdob"  value="{{emp_primarydata[0][14]}}" class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Mother Name:					
+				<input type="text" id="mname" name="mname"  value="{{emp_primarydata[0][15]}}" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Mother DOB:	
+				<input type="text" id="mdob" name="mdob"  value="{{emp_primarydata[0][16]}}" class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				Permanent Address:					
+				<textarea id="paddr" name="paddr" value=" Demo Address" class="form-control" rows="1"> {{emp_primarydata[0][17]}}</textarea>
+			</div>
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				Temporary Address:					
+				<textarea id="paddr" name="paddr" value=" Demo Address" class="form-control" rows="1"> {{emp_primarydata[0][18]}} </textarea>
+			</div>
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				Status:
+				<input type="text" id="mstatus" name="mstatus"  value="{{emp_primarydata[0][19]}}" class="form-control col-lg-6" /> 
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Spouse Name:					
+				<input type="text" id="sname" value="{{emp_primarydata[0][20]}}" name="sname" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Spouse DOB:					
+				<input type="text" id="sdob" value="{{emp_primarydata[0][21]}}" name="sdob" class="form-control" /> 
+			</div>
+			
+			
+		</div>
+		
+		<div class="col-lg-4">
+			<img src="static/ProfilePic/{{emp_primarydata[0][22]}}" id="imgpic" class="col-lg-12" style="height:400px;margin-top:25px;" />
+			
+				<input type="file" id="imgfile" class="col-lg-5" style="float:left;" />
+		</div>
+		
+	</div>		
+
+
+
+<h5 style="font-weight:bolder;color:blue;">Education and ID Proofs</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Select Qualification :</label>
+					<select id="qual" name="qual" class="col-lg-3 form-control" style="float:left;">
+						<option value="0">Select Qualification</option>
+						<option>B.Com</option>
+						<option>B.C.A</option>
+						<option>M.Com</option>
+						<option>M.C.A</option>
+						<option>SSLC</option>
+						<option>PUC</option>
+						<option>BBM</option>
+						<option>BA</option>
+						<option>Diploma</option>
+						<option>B.Sc</option>
+						<option>BE</option>
+						<option>B.Ed</option>
+						<option>MBA</option>
+						<option>MA</option>
+						<option>MHRD</option>
+						<option selected>BHRD</option>
+						<option>ITI</option>
+						<option>BBA</option>
+					</select>
+				<input type="file" id="qualfile" class="col-lg-2" style="float:left;" />
+				<input type="button" value="Add" id="btn_addqual" style="float:left;" class="btn btn-danger col-lg-1" />
+			</div>
+			<div class="col-lg-12" id="qualtablediv" style="float:left;margin-top: 5px;display:block;padding:20px;">
+				<table id="qualtable" style="width:100%;">
+					<tr>
+						<th>Qualification</th>
+						<th>Document</th>
+						<th>View</th>
+						<th>Delete</th>
+					</tr>
+				{% for item in emp_qualdata %} 
+				
+				
+				<tr>
+                  <td>{{item[2]}}</td>
+                  <td>{{item[3]}}</td>
+                  <td><a href="./static/QualFile/{{item[3]}}" target="_blank"> <i class='fa fa-eye' aria-hidden='true'></i></a></td>
+                  <td><a href="#"> <i class='fa fa-trash' aria-hidden='true'></i></a></td>
+					
+                </tr>
+						
+			  {% endfor %} 
+					  
+				</table>
+			</div>
+			
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Govt. Identity Cards :</label>
+					<select id="govtidcard" name="govtidcard"  class="col-lg-3 form-control" style="float:left;">
+						<option value="Aadhar Card">Aadhar Card</option>
+						<option value="PAN Card" selected>PAN Card</option>
+						<option value="License">License</option>
+						<option value="Voter ID">Voter ID</option>
+						<option value="Passport">Passport</option>
+						<option value="Ration Card">Ration Card</option>
+						<option value="Photograph">Photograph</option>
+					</select>
+				<input type="file" id="idcardfile" class="col-lg-2" style="float:left;" />
+				<input type="button" value="Add" id="btn_addidcard" style="float:left;" class="btn btn-danger col-lg-1" />
+			</div>
+			
+			
+			<div class="col-lg-12" id="idcardtablediv" style="float:left;margin-top: 5px;display:block;padding:20px;">
+				<table id="idcardtable" style="width:100%;">
+				
+					<tr>
+						<th>ID Card</th>
+						<th>Document</th>
+						<th>View</th>
+						<th>Delete</th>
+					</tr>
+				
+				{% for item in emp_idcarddata %} 
+				
+				
+				<tr>
+                  <td>{{item[2]}}</td>
+                  <td>{{item[3]}}</td>
+                  <td><a href="./static/IdCards/{{item[3]}}" target="_blank"> <i class='fa fa-eye' aria-hidden='true'></i></a></td>
+                  <td><a href="#"> <i class='fa fa-trash' aria-hidden='true'></i></a></td>
+					
+                </tr>
+						
+			  {% endfor %} 
+					  
+				</table>
+			</div>
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Scanned Copy of Letter :</label>
+					<select id="scanletter" name="scanletter"  class="col-lg-3 form-control" style="float:left;">
+					<option value="0">--Select Letter Types--</option>
+					<option>Transact Offer Letter</option>
+					<option>Transact Appointment Letter</option>
+					<option>Transact Increment Letter</option>
+					<option>Transact Releiving Letter</option>
+					<option>Previous Company Offer Letter</option>
+					<option>Previous Company Releiving Letter</option>
+					<option>Previous Company Experience Letter</option>
+					<option>Previous Company Increment Letter</option>
+					<option>Previous Company Payslip</option>
+					<option selected>Resume</option>
+					</select>
+				<input type="file" id="scanletterfile" class="col-lg-2" style="float:left;" />
+					<select id="comporder" name="comporder"  class="col-lg-2 form-control" style="float:left;">
+					<option value="0">Company Order</option>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					</select>
+				<input type="button" value="Add Letter" id="btn_addscanletter" style="float:left;" class="btn btn-danger col-lg-1" />
+			</div>
+			
+			<div class="col-lg-12" id="scanlettertablediv" style="float:left;margin-top: 5px;display:block;padding:20px;">
+				<table id="scanlettertable" style="width:100%;">
+					  
+					<tr>
+						<th>Scanned Document</th>
+						<th>Document</th>
+						<th>Company Order</th>
+						<th>View</th>
+						<th>Delete</th>
+					</tr>
+				{% for item in emp_scandocdata %} 
+				
+				
+				<tr>
+                  <td>{{item[2]}}</td>
+                  <td>{{item[3]}}</td>
+                  <td>{{item[4]}}</td>
+                  <td><a href="./static/ScanDoc/{{item[3]}}" target="_blank"> <i class='fa fa-eye' aria-hidden='true'></i></a></td>
+                  <td><a href="#"> <i class='fa fa-trash' aria-hidden='true'></i></a></td>
+					
+                </tr>
+						
+			  {% endfor %} 
+				</table>
+			</div>
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+			
+				<label style="float:left;" class="col-lg-2">Covid Vaccination :</label>
+					<select id="cvaacine" name="cvaacine"  class="col-lg-3 form-control" style="float:left;">
+						<option value="">Select</option>
+						<option>Partially Vaccinated</option>
+						<option>Fully Vaccinated</option>
+						<option>Booster Vaccination Done</option>
+						<option>Not Vaccinated</option>
+					</select>
+					
+				<input type="file" id="covidreport" name="covidreport" class="col-lg-4" style="float:left;" />
+				<input type="button" value="Add Report" id="btn_addcovidreport" style="float:left;" class="btn btn-danger col-lg-1" />
+			</div>
+			
+
+			<div class="col-lg-12" id="covidreptablediv" style="float:left;margin-top: 5px;display:block;padding:20px;">
+				<table id="covidreptable" style="width:100%;">
+					  
+					<tr>
+						<th>Vaccination</th>
+						<th>Document</th>
+						<th>View</th>
+						<th>Delete</th>
+					</tr>
+				{% for item in emp_covidrep %} 
+				
+				
+				<tr>
+                  <td>{{item[2]}}</td>
+                  <td>{{item[3]}}</td>
+                  <td><a href="./static/CovidReports/{{item[3]}}" target="_blank"> <i class='fa fa-eye' aria-hidden='true'></i></a></td>
+                  <td><a href="#"> <i class='fa fa-trash' aria-hidden='true'></i></a></td>
+					
+                </tr>
+						
+			  {% endfor %} 
+				</table>
+			</div>			
+			
+		</div>
+		
+	</div>		
+
+
+
+<h5 style="font-weight:bolder;color:blue;">Employee Status Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Employee Status :</label>
+				
+				<input type="text" id="estatus" value="{{emp_primarydata[0][23]}}" name="estatus" class="form-control" /> 
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Interview Date :</label>
+					<input type="text" id="idate" value="{{emp_primarydata[0][24]}}" name="idate" class="form-control" /> 
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Date of Joining :</label>
+					<input type="text" id="doj" value="{{emp_primarydata[0][25]}}" name="doj" class="form-control" /> 
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Date of Leaving :</label>
+					<input type="text" id="dol" value="{{emp_primarydata[0][26]}}" name="dol" class="form-control" /> 
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">B.G Verfied  :</label>
+				<textarea id="bgv" name="bgv" class="form-control" rows="1"> {{emp_primarydata[0][27]}}</textarea>
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Certification Date :</label>
+				<input type="text" id="certdate"  value="{{emp_primarydata[0][28]}}" name="certdate" class="form-control" /> 
+			</div>
+			
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Reason of Exit  :</label>
+				<textarea id="bgv" name="bgv" class="form-control" rows="1">{{emp_primarydata[0][29]}} </textarea>
+			</div>
+			
+			
+			
+			
+			
+		</div>
+		
+	</div>	
+
+
+
+<h5 style="font-weight:bolder;color:blue;">Experience Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Source of Walkin :</label>
+				<input type="text" id="walkin"  value="{{emp_primarydata[0][30]}}" name="walkin" class="form-control" /> 
+					</select>
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Experience :</label>
+				
+				<input type="text" id="exp"  value="{{emp_primarydata[0][31]}}" name="exp" class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-12" id="expcerttablediv" style="float:left;margin-top: 5px;display:block;padding:20px;">
+				<table id="expcerttable" style="width:100%;">
+					  
+					<tr>
+						<th>Company</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Designation</th>
+						<th>Certificate</th>
+						<th>View</th>
+						<th>Delete</th>
+					</tr>
+				{% for item in emp_expcert %} 
+				
+				
+				<tr>
+                  <td>{{item[2]}}</td>
+                  <td>{{item[3]}}</td>
+                  <td>{{item[4]}}</td>
+                  <td>{{item[5]}}</td>
+                  <td>{{item[6]}}</td>
+                  <td><a href="./static/CertFile/{{item[6]}}" target="_blank"> <i class='fa fa-eye' aria-hidden='true'></i></a></td>
+                  <td><a href="#"> <i class='fa fa-trash' aria-hidden='true'></i></a></td>
+					
+                </tr>
+						
+			  {% endfor %} 
+				</table>
+			</div>
+			
+			<script>
+			function verifyexp()
+			{
+				var exp=document.getElementById('exp').value;
+				if(exp=="Experienced")
+				{
+					document.getElementById('expdata').style.display="block";
+				}
+				else
+				{
+					document.getElementById('expdata').style.display="none";
+				}
+			}
+			</script>
+			
+			
+		</div>
+		
+	</div>	
+    
+    
+
+<h5 style="font-weight:bolder;color:blue;">Process Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Departments:</label>
+				
+				<input type="text" id="depts" name="depts"  value="{{emp_primarydata[0][32]}}" class="form-control col-lg-6" /> 
+					
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Process :</label>		
+				<input type="text" id="process" name="process"  value="{{emp_primarydata[0][33]}}" class="form-control col-lg-6" /> 			
+					
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Position :</label>		
+				<input type="text" id="position" name="position"  value="{{emp_primarydata[0][34]}}" class="form-control col-lg-6" /> 
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Manager :</label>			
+				<input type="text" id="mgrnm" name="mgrnm"  value="{{emp_primarydata[0][35]}}" class="form-control col-lg-6" /> 		
+					
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Asst. Manager :</label>		
+				<input type="text" id="amgrnm" name="amgrnm"  value="{{emp_primarydata[0][36]}}" class="form-control col-lg-6" /> 				
+					
+			</div>
+			
+			
+		</div>
+		
+	</div>	
+    
+    
+
+    
+
+<h5 style="font-weight:bolder;color:blue;">Payment Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">CTC:</label>
+					<input type="text" id="ctc" name="ctc" value="{{emp_primarydata[0][37]}}" class="form-control"  onchange="calculatesalary()" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Basic Salary:</label>
+					<input type="text" id="bsal" value="{{emp_primarydata[0][38]}}" name="bsal" class="form-control" onchange="calculatesalary1()" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Gross Salary:</label>
+					<input type="text" id="gsal"  value="{{emp_primarydata[0][39]}}" name="gsal" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Base Pay:</label>
+					<input type="text" id="bpay" value="{{emp_primarydata[0][40]}}" name="bpay" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Net Salary:</label>
+					<input type="text" id="nsal"  value="{{emp_primarydata[0][41]}}" name="nsal" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">SL Adherence:</label>
+					<input type="text" id="sladh"  value="{{emp_primarydata[0][42]}}" name="sladh" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Effective Date:</label>
+					<input type="text" id="effdate"  value="{{emp_primarydata[0][43]}}" name="effdate" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Bank Name:</label>		
+					<input type="text" id="bname"  value="{{emp_primarydata[0][44]}}" name="bname" class="form-control" /> 		
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">IFSC Code:</label>
+					<input type="text" id="ifsc" value="{{emp_primarydata[0][45]}}" name="ifsc" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Name as per Account:</label>
+					<input type="text" id="accname"  value="{{emp_primarydata[0][46]}}" name="accname" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Branch Name:</label>
+					<input type="text" id="branchname"  value="{{emp_primarydata[0][47]}}" name="branchname" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Part Timer Wage/Hour:</label>
+					<input type="text" id="partwagehr"  value="{{emp_primarydata[0][48]}}" name="partwagehr" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Bank Ac/No.:</label>
+					<input type="text" id="baccnum"  value="{{emp_primarydata[0][49]}}" name="baccnum" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-3" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Medical Insurance No:</label>
+					<input type="text" id="minsnum"  value="{{emp_primarydata[0][50]}}" name="minsnum" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-3" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Medical Insurance Amt:</label>
+					<input type="text" id="minsamt"  value="{{emp_primarydata[0][51]}}" name="minsamt" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Old PF:</label>
+					<input type="text" id="opf" value="{{emp_primarydata[0][52]}}" name="opf" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Old ESI:</label>
+					<input type="text" id="oesi" value="{{emp_primarydata[0][53]}}" name="oesi" class="form-control" /> 				
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Enable P.F [Forcibly]:</label>
+					<input type="radio" id="enablepf" name="enablepf" checked value="1" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Enable ESI [Forcibly]:</label>
+					<input type="radio" id="enableesi" name="enableesi" checked value="3" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Disable P.F [Forcibly]:</label>
+					<input type="radio" id="disablepf" name="enablepf" value="2" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Disable ESI [Forcibly]:</label>
+					<input type="radio" id="disableesi" name="enableesi"  value="4" /> 				
+			</div>
+			<!--
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Enable P.F [Forcibly]:</label>
+					<input type="checkbox" checked id="enablepf" name="enablepf" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Enable ESI [Forcibly]:</label>
+					<input type="checkbox" checked id="enableesi" name="enableesi" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Disable P.F [Forcibly]:</label>
+					<input type="checkbox" id="disablepf" name="disablepf" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Disable ESI [Forcibly]:</label>
+					<input type="checkbox" id="disableesi" name="disableesi"  /> 				
+			</div>
+			-->
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">UAN:</label>
+					<input type="text" id="uan" value="{{emp_primarydata[0][56]}}" name="uan" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">ESI #:</label>
+					<input type="text" id="esinum" value="{{emp_primarydata[0][57]}}" name="esinum" class="form-control" /> 				
+			</div>
+				<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Employer PF:</label>
+					<input type="text" id="emplyrpf" value="{{emp_primarydata[0][58]}}" name="emplyrpf" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Employee PF:</label>
+					<input type="text" id="emppf" value="{{emp_primarydata[0][59]}}"  name="emppf" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Employer ESIC:</label>
+					<input type="text" id="emplyresic" value="{{emp_primarydata[0][60]}}" name="emplyresic" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Employee ESIC:</label>
+					<input type="text" id="empesic"  value="{{emp_primarydata[0][61]}}" name="empesic" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Professional Tax:</label>
+					<input type="text" id="proftax"  value="{{emp_primarydata[0][62]}}" name="proftax" class="form-control" /> 				
+			</div>
+
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				{% if emp_primarydata[0][66]|string=="Signed" %}
+					<h1><a href="./static/DeclarationDocs/TG{{emp_primarydata[0][1]}}_pfdeclaration.pdf" target="_blank">Signed Document View</a>		</h1>			
+				{% endif %}
+			</div>
+
+		</div>
+		<script>
+			
+			function calculatesalary()
+			{
+				var ctc=document.getElementById('ctc').value;
+				ctc=parseFloat(ctc);
+				var bsal=6500;
+				var emplyrpfper=0.13;
+				var emplyresicper=0.0325;
+				var emppfper=0.12;
+				var empesicper=0.0075;
+				var pt=200;
+				var emplyresic=emplyresicper*ctc;
+				var emplyrpf=emplyrpfper*bsal;
+				var gsal=ctc-(emplyresic+emplyrpf);
+				var empesic=empesicper*gsal;
+				var emppf=emppfper*bsal;
+				
+				if(gsal<15000)
+				{
+					pt=0;
+				}
+				var netsal=gsal-(empesic+emppf+pt);
+				
+				document.getElementById('bsal').value=bsal.toFixed(2);
+					document.getElementById('gsal').value=gsal.toFixed(2);
+					document.getElementById('nsal').value=netsal.toFixed(2);
+					document.getElementById('proftax').value=pt;
+					document.getElementById('emplyrpf').value=emplyrpf.toFixed(2);
+					document.getElementById('emppf').value=emppf.toFixed(2);
+					document.getElementById('emplyresic').value=emplyresic.toFixed(2);
+					document.getElementById('empesic').value=empesic.toFixed(2);
+				/*
+				if(ctc=="19000")
+				{
+					document.getElementById('bsal').value="6500";
+					document.getElementById('gsal').value="17537.5";
+					document.getElementById('nsal').value="16425.9";
+					document.getElementById('proftax').value="200";
+					document.getElementById('emplyrpf').value="845";
+					document.getElementById('emppf').value="780";
+					document.getElementById('emplyresic').value="617.5";
+					document.getElementById('empesic').value="132";
+				}
+				else if(ctc=="228000")
+				{
+					document.getElementById('bsal').value="78000";
+					document.getElementById('gsal').value="210450";
+					document.getElementById('nsal').value="197111.6";
+					document.getElementById('proftax').value="200";
+					document.getElementById('emplyrpf').value="845";
+					document.getElementById('emppf').value="780";
+					document.getElementById('emplyresic').value="570";
+					document.getElementById('empesic').value="103";
+				}
+				else if(ctc=="13500")
+				{
+					document.getElementById('bsal').value="6500";
+					document.getElementById('gsal').value="12216.2";
+					document.getElementById('nsal').value="11344.6";
+					document.getElementById('proftax').value="0";
+					document.getElementById('emplyrpf').value="845";
+					document.getElementById('emppf').value="780";
+					document.getElementById('emplyresic').value="438.7";
+					document.getElementById('empesic').value="91.6";
+				}
+				else if(ctc=="162000")
+				{
+					document.getElementById('bsal').value="78000";
+					document.getElementById('gsal').value="162000";
+					document.getElementById('nsal').value="136135.5";
+					document.getElementById('proftax').value="0";
+				}
+				else if(ctc=="50000")
+				{
+					document.getElementById('bsal').value="15000";
+					document.getElementById('gsal').value="48050";
+					document.getElementById('nsal').value="44050";
+					document.getElementById('proftax').value="200";
+					document.getElementById('emplyrpf').value="1950";
+					document.getElementById('emppf').value="1800";
+					document.getElementById('emplyresic').value="0";
+					document.getElementById('empesic').value="0";
+				}
+				else if(ctc=="600000")
+				{
+					document.getElementById('bsal').value="180000";
+					document.getElementById('gsal').value="576600";
+					document.getElementById('nsal').value="528600";
+					document.getElementById('proftax').value="200";
+				}
+				*/
+			}
+			
+			function calculatesalary1()
+			{
+				var ctc=document.getElementById('ctc').value;
+				ctc=parseFloat(ctc);
+				
+				var bsal=document.getElementById('bsal').value;
+				bsal=parseFloat(bsal);
+				var emplyrpfper=0.13;
+				var emplyresicper=0.0325;
+				var emppfper=0.12;
+				var empesicper=0.0075;
+				var pt=200;
+				var emplyresic=emplyresicper*ctc;
+				var emplyrpf=emplyrpfper*bsal;
+				var gsal=ctc-(emplyresic+emplyrpf);
+				var empesic=empesicper*gsal;
+				var emppf=emppfper*bsal;
+				
+				if(gsal<15000)
+				{
+					pt=0;
+				}
+				var netsal=gsal-(empesic+emppf+pt);
+				
+				document.getElementById('bsal').value=bsal.toFixed(2);
+					document.getElementById('gsal').value=gsal.toFixed(2);
+					document.getElementById('nsal').value=netsal.toFixed(2);
+					document.getElementById('proftax').value=pt;
+					document.getElementById('emplyrpf').value=emplyrpf.toFixed(2);
+					document.getElementById('emppf').value=emppf.toFixed(2);
+					document.getElementById('emplyresic').value=emplyresic.toFixed(2);
+					document.getElementById('empesic').value=empesic.toFixed(2);
+			}
+		</script>
+	
+	</div>	
+    
+    		
+	
+	<div class="col-lg-12 row">
+		<!--<input type="button" value="Save Data" id="btn_saveonboarddata" style="float:left;margin:10px 30px;left:20%;" class="btn btn-danger col-lg-5" />
+		<input type="button" value="HR-OPS View" id="btn_genmail" style="float:left;margin:10px 30px;left:20%;" class="btn btn-danger col-lg-5" />-->
+		<input type="button" value="Verify Data" id="btn_verifyonboarddata" style="float:left;margin:10px 30px;left:20%;" class="btn btn-danger col-lg-5" />
+		<input type="button" value="Reset" id="btn_resetonboarddata" style="float:left;margin:10px 30px;left:20%;" class="btn btn-danger col-lg-5" />
+      
+    </div>
+  </div>
+
+  
+  <!-- /.content-wrapper -->
+  <!--<footer class="main-footer">
+   <strong>Copyright &copy; 
+    <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>  <a href="https://transactglobal.com/">Transact BPO Services India Pvt Ltd </a>.</strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block">
+       <b>Version</b> 1.0.0-Beta   </div>
+  </footer>-->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<!-- <script src="plugins/jquery/jquery.min.js"></script> -->
+<!-- jQuery UI 1.11.4 -->
+<!-- <script src="plugins/jquery-ui/jquery-ui.min.js"></script> -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!-- <script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script> -->
+<!-- <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link href="/resources/demos/style.css" rel="stylesheet" /> -->
+<!-- Bootstrap 4 -->
+<!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+<!-- ChartJS -->
+<!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
+<!-- Sparkline -->
+<!-- <script src="plugins/sparklines/sparkline.js"></script> -->
+<!-- JQVMap -->
+<!-- <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+<!-- jQuery Knob Chart -->
+<!-- <script src="plugins/jquery-knob/jquery.knob.min.js"></script> -->
+<!-- daterangepicker -->
+<!-- <script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script> -->
+<!-- Tempusdominus Bootstrap 4 -->
+<!-- <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script> -->
+<!-- Summernote -->
+<!-- <script src="plugins/summernote/summernote-bs4.min.js"></script> -->
+<!-- overlayScrollbars -->
+<!-- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+<!-- AdminLTE App -->
+<script src="./static/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="dist/js/demo.js"></script> -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="dist/js/pages/dashboard.js"></script> -->
+<!--
+<script>
+$(document).ready(function(){
+    $('#tblData').after('<div id="nav"></div>');
+    var rowsShown = 20;
+    var rowsTotal = $('#tblData tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a href="#" rel="'+i+'">'+pageNum+'</a> ');
+    }
+    $('#tblData tbody tr').hide();
+    $('#tblData tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#tblData tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
+</script>-->
+
+
+<script>
+/*
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} */
+</script>
+
+
+		
+<script>
+
+	//Pagination
+	function pageloader()
+	{
+		var pnum=document.getElementById('pgnum').value;
+		window.location='paginationload?pgnum='+pnum;
+	}
+	
+	debugger;
+	const urlParams = new URLSearchParams(window.location.search);
+	const myParam = urlParams.get('pgnum');
+	const month = urlParams.get('month');
+	const year = urlParams.get('year');
+	const secode = urlParams.get('secode');
+	const procnm = urlParams.get('procnm');
+	const mgrnm = urlParams.get('mgrnm');
+	if(myParam!=null)
+	{
+		document.getElementById('pgnum').value=myParam;
+	}
+	if(month!=null)
+	{
+		document.getElementById('mon').value=month;
+	}
+	if(secode!=null)
+	{
+		document.getElementById('secode').value=secode;
+	}
+	if(procnm!=null)
+	{
+		document.getElementById('procnm').value=procnm;
+	}
+	if(mgrnm!=null)
+	{
+		document.getElementById('mgrnm').value=mgrnm;
+	}
+	if(year!=null)
+	{
+		document.getElementById('year').value=year;
+	}
+	
+			
+				
+			
+			
+</script>
+<!-- jQuery -->
+<script src="./static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="./static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="./static/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="./static/plugins/toastr/toastr.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./static/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="./static/dist/js/demo.js"></script>
+
+<script src="{{ url_for('static', filename='restapi.js') }}"></script>
+<script>
+	debugger;
+	//$('td:nth-child(38),th:nth-child(90)').hide();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Employee Rostering</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./static/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="./static/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="./static/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="./static/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="./static/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="./static/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="./static/plugins/summernote/summernote-bs4.min.css">
+  
+  
+  
+  <!-- DataTables -->
+  <link rel="stylesheet" href="./static/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="./static/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="./static/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="./static/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="index3.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Employee Rostering</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="./static/dist/img/ts_global_light_logo1-300x138.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">TransactGlobal</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="./static/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+               <li class="nav-item">
+                <a href="./index.html" class="nav-link ">
+                  <i class="fas fa-home"></i>
+                  <p>
+                    Home
+                  
+                  </p>
+                </a>
+                
+              </li>   
+			  <li class="nav-item menu-open">
+                <a href="attdashboard"  class="nav-link active">
+                  <i class="fas fa-tachometer-alt"></i>
+                  <p>
+                    Attendance Dashboard                  
+                  </p>
+                </a>                
+              </li>
+			  
+              <li class="nav-item">
+                <a href="./RecruitmentDashboard.html" class="nav-link ">
+                  <i class="fas fa-archway"></i>
+                  <p>
+                    Recruitment Dashboard
+                  
+                  </p>
+                </a>
+                
+              </li>
+
+              
+              <li class="nav-item">
+                <a href="./Employee_information.html"  class="nav-link">
+                  <i class="fas fa-user-edit"></i>
+                  <p>
+                    Employee Information 
+                  
+                  </p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="#" class="nav-link" >
+                  <i class="fas fa-user-tag"></i>
+                  <p>
+                    Personal Information 
+                  
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./hrattendance" class="nav-link" >
+                  <i class="fas fa-money-check-alt"></i>
+                  <p>
+                    Attendance
+                  
+                  </p>
+                </a>
+              </li>
+             
+              <li class="nav-item">
+                <a href="#" class="nav-link" >
+                  <i class="fas fa-file-signature"></i>
+                  <p>
+                    
+                  Rostering
+    
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./usermanagement.html" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>
+                    
+                  Users
+    
+                  </p>
+                </a>
+              </li>
+    
+              
+              <li class="nav-item">
+                <a href="./Roles.html" class="nav-link" >
+                  <i class="fas fa-user-check"></i>
+                  <p>
+                    
+                  Roles
+    
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./Employee_add_search.html" class="nav-link" >
+                  <i class="fas fa-search"></i>
+                  <p>
+                    
+                  Employee Add/Search
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./paytype.html" class="nav-link" >
+                  <i class="fas fa-money-check-alt"></i>
+                  <p>
+                    
+                  Pay Type
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./Identity_Cards.html" class="nav-link" >
+                  <i class="fas fa-address-card"></i>
+                  <p>
+                    
+                  Identity Proofs
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./languages.html" class="nav-link" >
+                  <i class="fas fa-language"></i>
+                  <p>
+                    
+                  Language
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./position.html" class="nav-link" >
+                  <i class="fas fa-users-cog"></i>
+                  <p>
+                    
+                  Position 
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./process.html" class="nav-link" >
+                  <i class="fas fa-chalkboard-teacher"></i>
+                  <p>
+                  Process
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-users"></i>
+                  <p>
+                    
+                    Roll Menu Mapping
+                  </p>
+                </a>
+                </li>
+              <li class="nav-item">
+                  <a href="./Assign-Emps-to-team.html" class="nav-link ">
+                    <i class="fas fa-people-arrows"></i>
+                  <p>
+                    
+                   Assign Emps To Team
+                  </p>
+                  </a>
+                  </li>
+              <li class="nav-item">
+                    <a href="./Employee_Category.html" class="nav-link">
+                      <i class="fas fa-id-card-alt"></i>
+                    <p>
+                      
+                      Emps Category
+                    </p>
+                      <p>
+                         
+                      </p>
+                    </a>
+                    </li>
+              <li class="nav-item">
+                      <a href="sourceofwalkin" class="nav-link">
+                        <i class="fas fa-street-view"></i>
+                      <p>
+                        
+                        Source of WalkIn
+                      </p>
+                        
+                      </a>
+                      </li>
+              <li class="nav-item">
+                        <a href="#" class="nav-link">
+                          <i class="fas fa-user-minus"></i>
+                        <p>
+                          
+                          UnAssigned Employee
+                        </p>
+                         
+                        </a>
+                        </li>
+			  <li class="nav-item">
+                          <a href="./shifttiming.html" class="nav-link">
+                            <i class="fas fa-user-clock"></i>
+                          <p>
+                            
+                            Shift Timing
+                          </p>
+                           
+                          </a>
+                          </li>
+			  <li class="nav-item">
+                            <a href="#" class="nav-link">
+                              <i class="fas fa-file-invoice-dollar"></i>
+                            <p>
+                              
+                              PayRoll Setup
+                            </p>
+                             
+                            </a>
+                            </li>
+			  <li class="nav-item">
+                                <a href="./qualification.html" class="nav-link">
+                                  <i class="fas fa-address-book">
+                                    <p>
+                                      
+                                    Qualification
+                                    </p>
+                                  </i>
+                                </a>
+              </li>
+              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fas fa-envelope-open-text">
+                                    <p>
+                                      
+                                    Un Received Offer Letters 
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="./banks.html" class="nav-link">
+                                  <i class="fas fa-university">
+                                    <p>
+                                      
+                                    Bank Names
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fas fa-sign-in-alt">
+                                    <p>
+                                      
+                                   Web Login Access
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fas fa-rupee-sign">
+                                    <p>
+                                      
+                                   View Payments 
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fas fa-hand-holding-usd">
+                                    <p>
+                                      
+                                   Process Salary
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="./BGverification.html" class="nav-link">
+                                  <i class="fas fa-file-invoice">
+                                    <p>
+                                      
+                                   B.G.Verificaation
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="./Holiday_Calendar.html" class="nav-link">
+                                  <i class="far fa-calendar-check">
+                                    <p>
+                                      
+                                   Holiday Calendar
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="./Bulk_Upload_Perks_&_Expenses.html" class="nav-link">
+                                  <i class="fas fa-comment-dollar">
+                                    <p>
+                                      
+                                   Bulk Upload Perks & Expenses
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fas fa-file-import">
+                                    <p>
+                                      
+                                   Document Upload 
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="./IPadressList.html" class="nav-link">
+                                  <i class="fas fa-passport">
+                                    <p>
+                                      
+                                   IP Address List 
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+              <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                  <i class="fas fa-unlock-alt">
+                                    <p>
+                                      
+                                   Change Password
+                                    </p>
+                                  </i>
+                                </a>
+                              </li>
+        </ul>
+		</nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Employee Rostering</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Employee Rostering</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+		<div  style="padding:0px 50px;">
+		 <div class="col-sm-12 row">
+		 
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				<label for="target_date" class="form-label">Employee List</label>
+				<select name="list_box_name[]" id="baseemplist" size="number_of_options"  style="height: 300px;" class="form-control shadow-sm col-lg-12" multiple="multiple">
+				{% for item in emplist %}
+					<option>{{item[0]}}-{{item[1]}}</option>
+				{% endfor %}
+				</select>
+			</div>
+			
+			
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				<label for="target_date" class="form-label">Process</label>
+				<select id="proclist" class="form-control shadow-sm col-lg-12" onchange="fetchprocwiseemp()">
+				<option>Select Process</option>
+					{% for item in procdata %}
+					<option>{{item[0]}}</option>
+				{% endfor %}
+				</select>
+				
+                <input type="button" class="btn btn-danger col-12 form-control"  style="margin-top: 5px;" id="btn_addselemp" value="Add Selected" />
+                <input type="button" class="btn btn-danger col-12 form-control"  style="margin-top: 5px;" id="btn_remselemp" value="Remove Selected" />
+				<br/><br/>
+				Start Date : <input type="date" id="sdate" name="sdate" /><br/>
+				End Date : <input type="date" id="edate" name="edate" />
+                <input type="button" class="btn btn-danger col-12 form-control"  style="margin-top: 5px;" id="btn_rosgendates" value="Generate Dates" />
+                <input type="button" class="btn btn-danger col-12 form-control"  style="margin-top: 5px;" id="btn_remgendates" value="Remove Dates" />
+		
+			</div>
+			
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				<label for="target_date" class="form-label">Selected List</label>
+				<select name="list_box_name[]" id="selemplist" size="number_of_options" class="form-control shadow-sm col-lg-12" style="height: 300px;" multiple="multiple">
+					
+				</select>
+			</div>
+			
+			
+			Select Date : <input type="date" id="inddate" name="inddate" onchange="addtosellist()" />
+		 <div class="col-sm-12 row">
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				<label for="target_date" class="form-label">Selected Dates</label>
+				<select name="list_box_name[]" id="seldates" size="number_of_options" class="form-control shadow-sm col-lg-12" style="height: 300px;" multiple="multiple">
+					
+				</select>
+			</div>
+			
+			<div class="col-lg-8" style="float:left;margin-top: 5px;">
+				<input type="radio" id="ltyper" name="typer" onchange="checkrad(" value="1" />Leave Type&nbsp;&nbsp;
+				<input type="radio" id="styper" name="typer" onchange="checkrad()" value="2"  />Shift Type
+			
+				<div class="col-lg-12" style="float:left;margin-top: 5px;">
+					<select id="ltype" name="ltype" class="form-control" style="width:500px;">
+						<option selected="selected" value="0">-- Select Leave Type --</option>
+						<option value="CL">Casual Leave</option>
+						<option value="WO">Weekly Off</option>
+						<option value="NH">National Holiday</option>
+						<option value="AL">Annual Leave</option>
+						<!--
+						<option value="CO">Comp Off</option>
+						<option value="SL">Sick Leave</option>
+						<option value="LOP">LOP</option>
+						-->
+					</select>
+				</div>
+				<br/>
+				<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<!--
+				<select name="stype" id="stype"  class="form-control" style="width:500px;">
+						<option selected="selected" value="0">-- Select Shift --</option>
+						<option value="1">8-30 AM To 5-30 PM</option>
+						<option value="2">9-00 AM To 6-00 PM</option>
+						<option value="3">9-30 AM To 6-30 PM</option>
+						<option value="4">10-00 AM To 7-00 PM</option>
+						<option value="5">6-00 AM To 2-00 PM</option>
+						<option value="6">2-00 PM To 10-00 PM</option>
+						<option value="7">7-00 AM To 3-00 PM</option>
+						<option value="8">8:00 AM To 5:00 PM</option>
+						<option value="9">9:00 PM To 5:00 AM [Night Shift]</option>
+						<option value="10">10:00 PM To 6:00 AM [Night Shift]</option>
+						<option value="11">11:00 AM To 8:00 PM</option>
+						<option value="12">7:00 AM To 4:00 PM</option>
+						<option value="14">02:00 PM to11:00 PM</option>
+						<option value="15">12:00 PM To 9:00 PM</option>
+						<option value="17">8:00 AM To 4:00 PM</option>
+						<option value="18">1:00 PM To 9:00 PM</option>
+						<option value="19">10:30Am To 7:30PM</option>
+						<option value="20">9:00 AM to 2:00 PM</option>
+						<option value="21">9:30 AM to 2:30 PM [Half Day Shift]</option>
+						<option value="22">10:00 AM to 3:00 PM</option>
+						<option value="1020">10:30 AM to 3:30 PM</option>
+						<option value="1021">11:00 AM To 16:00 PM</option>
+						<option value="1022">9:30 AM TO 5:30 PM</option>
+						<option value="1023">3:00 PM To 00:00 AM</option>
+						<option value="1024">3:00 PM  to 7:00 PM</option>
+						<option value="1025">1:00 PM To 10:00 PM</option>
+						<option value="1026">3-30 PM To 10-30 PM</option>
+						<option value="1027">6-00 PM To 10-00 PM</option>
+						<option value="1028">12:00 PM to 8:00 PM</option>
+						<option value="1029">8:30 AM To 4:30 PM</option>
+						<option value="1030">9:00 AM To 5:00 PM</option>
+						<option value="1031">9-30 AM To 5-30 PM</option>
+						<option value="1032">8:00 PM to 5:00 AM</option>
+						<option value="1033">2:30 PM to 7:00 PM</option>
+						<option value="1034">10:00 AM to 6:00 PM</option>
+						<option value="1035">11:30 AM to 8:30 PM</option>
+						<option value="1036">10:30AM To 6:30PM</option>
+						<option value="1037">1-30 PM - 7-00 PM</option>
+						<option value="1038">11-00 AM To 3-00 PM</option>
+						<option value="1039">4-00 PM To 8-00 PM</option>
+						<option value="1040">8-00 AM To 7-00 PM</option>
+						<option value="1041">11:30 AM To 7:30PM</option>
+						<option value="1042">11:00 AM To 7:00 PM</option>
+						<option value="1043">9-30 AM To 3-30 PM</option>
+						<option value="1044">1:00PM To 7:00PM</option>
+						<option value="1045">12:00PM To 7PM</option>
+						<option value="1046">3:00 PM To 7:00 PM</option>
+						<option value="1047">2:00PM To 7:00PM</option>
+						<option value="1048">9:00AM To 4:00PM</option>
+						<option value="1049">05PM To 9PM</option>
+						<option value="1050">09PM to 6AM</option>
+						<option value="1051">05:30PM To 10:30PM</option>
+						<option value="1052">04 PM To 09 PM</option>
+						<option value="1053">12pm to 5pm</option>
+						<option value="1054">7AM To 2PM</option>
+						<option value="1055">12:30PM To 9:30PM</option>
+						<option value="1056">6-00 AM To 3-00PM</option>
+						<option value="1057">11AM to 7PM</option>
+						<option value="1060">01:30PM TO 10:30PM</option>
+						<option value="1061">6.30AM TO 2.30PM</option>
+						<option value="1062">4.00 PM to 1.00 AM</option>
+						<option value="1063">07:00:00 to 14:00:00</option>
+						<option value="1064">7-00 AM To 4-00 PM</option>
+						<option value="1065">7:00 PM to 4:00 AM [Night Shift]</option>
+						<option value="1068">1.30PM TO 9.30PM</option>
+						<option value="1069">3-30 PM To 12-30 AM</option>
+						<option value="1070">10-00 PM to 7-00 AM</option>
+						<option value="1071">6-00 PM to 3-00 AM</option>
+						<option value="1072">7:30 AM to 4:30 PM</option>
+						<option value="1073">7-30 PM To 4-30 AM</option>
+						<option value="1074">8-30 PM To 5-30 AM</option>
+
+				</select>
+				-->
+				
+				<select name="stype" id="stype"  class="form-control" style="width:500px;">
+						<option selected="selected" value="0">-- Select Shift --</option>
+				{% if timelist is defined %}
+					{% for val in timelist %}
+					
+						<option value="{{val[0]}}">{{val[1]}}</option>
+								 
+					{% endfor %}
+				{% endif %}	
+				</div>
+				</div>
+			</div>
+		 <!--onclick="alert('Data saved successfully');"-->
+		 
+                <input type="button" class="btn btn-danger col-12 form-control"  style="margin-top: 5px;" id="btn_savrostdata" value="Save Data"  />
+		 </div>
+			
+			<!--
+			
+			
+			-->
+		 </div>  
+		   
+		 </div>
+       
+	   <!-- /.row -->
+        <!-- Main row -->
+         <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2021 <a href="https://transactglobal.com/">Transact Global</a>.</strong>
+    All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="./static/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="./static/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="./static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="./static/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="./static/plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="./static/plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="./static/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="./static/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="./static/plugins/moment/moment.min.js"></script>
+<script src="./static/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="./static/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="./static/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="./static/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./static/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="./static/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="./static/dist/js/pages/dashboard.js"></script>
+
+
+
+
+<!-- Bootstrap 4 -->
+<script src="./static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="./static/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="./static/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="./static/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="./static/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="./static/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="./static/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="./static/plugins/jszip/jszip.min.js"></script>
+<script src="./static/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="./static/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="./static/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="./static/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="./static/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script src="{{ url_for('static', filename='masterrestapi.js') }}"></script>
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Form </title>
+<!-- Meta tag Keywords -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Course Registration Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Meta tag Keywords -->
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- js -->
+<!-- //js -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<!-- //web-fonts --> 
+</head>
+<body>
+	<!-- banner --> 
+<div class="video"> 
+	<div class="center-container">
+	    <div class="w3ls-agileinfo">
+			<h1> Registration Form </h1>	
+		</div>
+		 <div class="bg-agile">
+			<h2> </h2>
+			<div class="login-form">	
+				
+					<input type="text"  id="name" name="Tittle" placeholder="Name"  />
+					<input type="text"  id="mail" name="Name" placeholder="E-mail"  />
+					<input type="text"  id="phno" name="Position" placeholder="Phone Number"  />
+					<input type="text"  id="usname" name="Company" placeholder="User Name"  />
+					<input type="password" id="passwrd" name="Email" placeholder="Password"  />
+					
+					<input type="submit" value="Submit" onclick="submit()">
+				
+			</div>	
+		</div>
+	<!-- //banner --> 
+	 
+	</div>	
+</div>
+ <script>
+	   function submit()
+		{
+		debugger;
+		var name=document.getElementById('name').value;
+		var male = document.getElementById('mail').value;
+		 var phn=document.getElementById('phno').value;
+		var uname= document.getElementById('usname').value;
+		var pass=document.getElementById('passwrd').value;
+		
+		 $.ajax({
+		  url:"/registers",
+		  cotentType:'application/json;charset=UTF-8',
+			data:{
+						'named':name,
+						'Email':male,
+						'phone':phn,
+						'user_name':uname,
+						'passwd':pass
+						
+				 },
+				 dataType:"json",
+					success:function (data)
+					{
+					alert("registered Successfull");
+					if(data=="Invalid e-mail address")
+					{
+					//alert("valid user");
+					window.location='newregister'
+					}
+					else
+					{
+					//alert("invalid user");
+					window.location="newregister";
+					}
+					
+					}
+					
+				});
+				
+		}	
+	</script>	
+</body>
+</html>

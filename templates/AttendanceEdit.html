@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TransactGlobal | Attendance Edit</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./static/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+ <!--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <!-- Tempusdominus Bootstrap 4 -->
+ <!--  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"> -->
+  <!-- iCheck -->
+  <!--  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
+ <!--  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css"> -->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="./static/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <!-- <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css"> -->
+  <!-- summernote -->
+  <link rel="stylesheet" href="./static/plugins/summernote/summernote-bs4.min.css">
+ 
+  <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" /> 
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script><script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  
+  
+  
+	  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+ <!--  <link href="/resources/demos/style.css" rel="stylesheet" /> -->
+  
+  <style>
+    table, th, td {
+              border:2px solid black;
+              text-align: center;
+              
+
+            }
+            th{
+              background-color: black;
+              color:white;
+              text-align: center;
+              
+            }
+
+            .divScroll {
+              padding-left:1% ;
+			overflow:scroll;
+			width: 1200px;
+			  height: 500px;
+			}
+
+
+
+
+			.tooltip-wrap {
+			  position: relative;
+			}
+			.tooltip-wrap .tooltip-content {
+			  display: none;
+			  position: absolute;
+			  bottom: 5%;
+			  left: 5%;
+			  right: 5%;
+			  background-color: #fff;
+			  padding: .5em;
+			}
+			.tooltip-wrap:hover .tooltip-content {
+			  display: block;
+			}
+</style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="./static/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+   
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="col-sm-12">
+      <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      
+      <h1 class="m-0">Attendance Editing Page</h1>
+    </div>
+    <!--      <div class="col-sm-6">
+      <img  class="animation__shake" src="./static/dist/img/1.2.png" />
+      <img  class="animation__shake" src="./static/dist/img/2.2.png" />
+      
+      <label style="padding-left: 30%;padding-right: 3%;">page  :</label> 
+      <select name="pages" id="pages" style="width: 8%;">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+    
+      </div>-->
+    </div>
+        </div><!-- /.col -->
+    <section class="content">
+           <br>
+          
+          <br>
+		  
+			<form id="atupdate" method="post" enctype="multipart/form-data">
+           <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row">
+				
+				<div  class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					  <div class="form-group">
+						<label for="ecode">Employee Code:</label>
+						<input type="text" readonly class="form-control" id="ecode" name="ecode" value="{{ecode}}" />
+						<!--<select class="form-control" id="ecode" name="ecode">
+							<option>Select Emp Code</option>
+							{% for item in empcodedata %} 
+							<option>{{item}}</option>
+							{% endfor %}
+						</select>-->
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="astatus">Attendance Status:</label>
+						<select class="form-control" id="astatus" name="astatus" value="aaa">
+							<option>Select Status</option>							
+							<option>P</option>						
+							<option>LOP</option>						
+							<option>SN</option>						
+							<option>WO</option>						
+							<option>TG</option>					
+							<option>DLOP</option>					
+							<option>QT</option>					
+							<option>LHD</option>					
+							<option>HD</option>					
+							<option>A</option>		
+						</select>
+					  </div>
+					  
+					  
+					  
+				</div>
+				
+				<div  class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					  
+					  <div class="form-group">
+						<label for="adate">Attendance Date:</label>						
+						<input type="text" readonly class="form-control" id="adate" name="adate"  value="{{adate}}"  />
+						<!--<select class="form-control" id="adate" name="adate">
+							<option>Select Date For Edit</option>
+							{% for item in datedata %} 
+							<option>{{item}}</option>
+							{% endfor %}
+						</select>-->
+						
+					  </div>
+					  
+					  
+					  
+					  <div class="form-group">
+						<label for="ras">Logged In As:</label>
+											
+						<input type="text" readonly class="form-control" id="ras" name="ras"  value="{{userrole}}"  />
+						<!--<select class="form-control" id="ras" name="ras">
+							<option>Select Role</option>							
+							<option value="1">Admin</option>						
+							<option value="2">HR Head</option>						
+							<option value="50">HR Team</option>						
+							<option value="39">Manager</option>
+						</select>-->
+					  </div>
+									
+				</div>
+				
+				<div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				
+					  <div class="form-group">
+						<label for="comments">Comments:</label>
+						<textarea class="form-control" id="comments" rows="3"  name="comments"></textarea>	
+					  </div>
+					  
+					   <div class="form-group">
+						<label for="pupload">Proof Upload:</label>
+						<input type="file" class="form-control" id="prod_mas" name="prod_mas" accept=".jpg,.png" />
+					   </div>
+				
+				</div>
+				
+
+
+
+           </div>
+		   </form>
+		   				<div  class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					
+					<input id="attupdate_btnsubmit" value="Update Attendance" type="submit" class="btn btn-success col-lg-6 col-md-6 col-sm-12 col-xs-12" />
+				
+				</div>
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+  
+  <!-- /.content-wrapper -->
+  <!--<footer class="main-footer">
+   <strong>Copyright &copy; 
+    <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>  <a href="https://transactglobal.com/">Transact BPO Services India Pvt Ltd </a>.</strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block">
+       <b>Version</b> 1.0.0-Beta   </div>
+  </footer>-->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<!-- <script src="plugins/jquery/jquery.min.js"></script> -->
+<!-- jQuery UI 1.11.4 -->
+<!-- <script src="plugins/jquery-ui/jquery-ui.min.js"></script> -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!-- <script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script> -->
+<!-- <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link href="/resources/demos/style.css" rel="stylesheet" /> -->
+<!-- Bootstrap 4 -->
+<!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+<!-- ChartJS -->
+<!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
+<!-- Sparkline -->
+<!-- <script src="plugins/sparklines/sparkline.js"></script> -->
+<!-- JQVMap -->
+<!-- <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+<!-- jQuery Knob Chart -->
+<!-- <script src="plugins/jquery-knob/jquery.knob.min.js"></script> -->
+<!-- daterangepicker -->
+<!-- <script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script> -->
+<!-- Tempusdominus Bootstrap 4 -->
+<!-- <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script> -->
+<!-- Summernote -->
+<!-- <script src="plugins/summernote/summernote-bs4.min.js"></script> -->
+<!-- overlayScrollbars -->
+<!-- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+<!-- AdminLTE App -->
+<script src="./static/dist/js/adminlte.js"></script>
+
+<script src="{{ url_for('static', filename='restapi.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="dist/js/demo.js"></script> -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="dist/js/pages/dashboard.js"></script> -->
+
+<script>
+	{% if atype is defined %}
+		var objSelect = document.getElementById("astatus");
+		setSelectedValue(objSelect, "{{atype}}");
+	{% endif %}
+	
+	
+	
+	function setSelectedValue(selectObj, valueToSet) {
+    for (var i = 0; i < selectObj.options.length; i++) {
+        if (selectObj.options[i].text== valueToSet) {
+            selectObj.options[i].selected = true;
+            return;
+        }
+    }
+}
+</script>
+</body>
+</html>

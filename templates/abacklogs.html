@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Backlogs Management</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="./static/assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="./static/css/bootstrap.css" rel="stylesheet" />
+        <link href="./static/css/dashboard.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      
+  <style>
+    table, th, td {
+              border:1px solid rgb(241, 235, 235);
+              text-align: center;            
+
+            }
+            th{
+              /* background-color: #234027; */
+              color:white;
+              text-align: center;
+			  min-width:100px;
+              
+            }
+
+            .divScroll {
+              padding-left:1% ;
+			/*overflow:scroll;*/
+			width: 1200px;
+			  height: 600px;
+			}
+
+
+             .bg-darkblue {
+				 background-color: #3459E9 !important;
+				 opacity: 1!important;
+			 }
+
+             .border-darkblue {
+				 border-color: #3459E9 !important;
+			 }
+			 
+            .fs-7 {
+            font-size: 0.75rem !important;
+            }
+
+            .fs-8 {
+            font-size: 0.55rem !important;
+            }
+</style>
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper" >
+                <div class="sidebar-heading text-break border-bottom bg-light text-center">
+                    <a href="attdashboard"><img src="./static/images/logo.png" alt="logo" class="img-fluid" style="max-width: 12rem; height: 4rem;"></a>
+                </div>
+                <div class="list-group list-group-flush text-start" style="font-size:13px;height:700px;overflow:scroll;overflow-x: hidden;">
+                  
+                  
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="adminhome" style="color:black;"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="asubjects" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> Subjects</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="aelectives" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> Electives</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-primary text-white p-3" href="abacklogs" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> Backlogs</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="login" style="color:black;"><i class="fa fa-bookmark" aria-hidden="true"></i> Logout</a>               
+                      
+                     
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div class="col-lg-10 col-xs-12">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-light shadow-none btn-sm" id="sidebarToggle">
+                             <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                               
+                                <li class="nav-item text-center">
+                                  <a class="nav-link bg-danger" aria-current="page" href="login">
+                                      <i class="fas fa-sign-out-alt text-white"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    <h4 class="my-4">Backlog Management</h4>
+					
+                    <div class="row gap-2">
+                        <div class="col-md-4 fs-7">
+                            <label for="lang">USN :</label>
+                            <input type="text" name="usn" id="usn" class="form-control shadow-none" />
+                        </div>
+                        <div class="col-md-4 fs-7">
+                            <label for="lang">Subject :</label>
+                            <input type="text" name="sub" id="sub" class="form-control shadow-none" />
+                        </div>
+                        <div class="col-md-4 fs-7">
+                            <label for="lang">Course :</label>
+                            <select name="course" id="course" class="form-control shadow-none">
+                                    <option>Select Course</option>
+                                    <option>Automobile</option>
+                                    <option>Civil</option> 
+                                    <option>Computer Science</option>   
+                                    <option>Information Science</option>
+                                    <option>Mechanical</option>
+                                    <option>Electronics & Communication</option>
+                                    <option>Electrical & Electronics Engineering</option>
+                                    <option>Industrial Production Engineering</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 fs-7">
+                            <label for="lang">Semester :</label>
+                            <select name="sem" id="sem" class="form-control shadow-none">
+                                    <option>Select Semester</option>
+                                    <option>1</option>
+                                    <option>2</option> 
+                                    <option>3</option>   
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 fs-7">
+                            <label for="lang">Subject Code :</label>
+                            <input type="text" name="scode" id="scode" class="form-control shadow-none" />
+                        </div>
+                        <div class="col-md-4 fs-7">
+                            <label for="lang">Credits :</label>
+                            <input type="text" name="credits" id="credits" class="form-control shadow-none" />
+                        </div>
+                        
+                        <div class="w-100"></div>
+                        <div class="col-md-8">
+                            <div class="btn-group w-100 gap-2">
+								
+								 <input type="button" class="btn btn-danger col-4 form-control fs-7" id="btn_addnewblog" value="Add Backlog" />
+                <button type="button" class="btn btn-danger col-4 form-control fs-7" id="btn_clearnewblog">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+                    <h6>Backlogs Data</h6>
+                    <div  class="col-lg-8 col-md-8 col-sm-12 col-xs-12 fs-7">
+                        <table style="width: 100%;">
+                        
+                          <thead class="bg-darkblue text-white border-darkblue">
+                          <tr class="fs-7">
+                            <th>ID</th>
+                            <th>USN</th>
+                            <th>Course</th>
+                            <th>Sem</th>
+                            <th>Subject</th>
+                            <th></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            {% if blogdata is defined %}
+                                {% for val in blogdata %}
+                                
+                                <tr>
+                                    <td>{{val[0]}}</td>
+                                    <td>{{val[1]}}</td>
+                                    <td>{{val[2]}}</td>
+                                    <td>{{val[3]}}</td>
+                                    <td>{{val[4]}}</td>
+                                   <!-- <td><a href="roleedit<i class="fa fa-edit" aria-hidden="true" style="color:red"></i></td>-->
+                                    <td><a href="blogdelete?id={{val[0]}}"><i class="fa fa-trash" aria-hidden="true" style="color:red"></i></a></td>
+                                </tr>
+                                            
+                                {% endfor %}
+                            {% endif %}	
+                              
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+
+<script src="./static/masterrestapi.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="./static/js/bootstrap.js"></script>
+        <!-- Core theme JS-->
+        <script src="./static/js/dashboard.js"></script>
+	
+    </body>
+</html>

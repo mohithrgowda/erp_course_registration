@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link href="./static/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+    <div class="d-flex flex-column min-vh-100">
+
+        <div class="container-fluid flex-fill d-flex flex-column justify-content-center">
+
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body shadow-xl text-center">
+                    <img src="./static/images/logo.png" alt="logo" class="img-fluid w-100" style="height:100px;">
+                    <hr class="mb-4">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <input type="text" class="form-control shadow-none" id="name" name="name" placeholder="Your Email" aria-label="Your email address" aria-describedby="basic-addon1" value="4PS16CS045" />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                            <input type="password" id="passwrd" name="passwrd" class="form-control shadow-none" placeholder="Your password" aria-label="Your password" aria-describedby="basic-addon1" value="student@1234" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-end">
+                        <button id="btn_login" class="btn shadow-none btn-outline-light border-2">
+                            <i class="fa fa-sign-in"></i>
+                             Sign In</button>
+                    </div>
+                    <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='restapi.js') }}"></script>
+ <script src="./static/js/bootstrap.js"></script>
+</body>
+</html>

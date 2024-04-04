@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TransactGlobal | Dashboard</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./static/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+ <!--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <!-- Tempusdominus Bootstrap 4 -->
+ <!--  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"> -->
+  <!-- iCheck -->
+  <!--  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
+ <!--  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css"> -->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="./static/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <!-- <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css"> -->
+  <!-- summernote -->
+  <link rel="stylesheet" href="./static/plugins/summernote/summernote-bs4.min.css">
+  
+  
+ 
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+ 
+ <!-- <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" /> 
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+ <!--<link href="/resources/demos/style.css" rel="stylesheet" /> -->
+ 
+ 
+ 
+ 
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="./static/plugins/fontawesome-free/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="./static/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="./static/plugins/toastr/toastr.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  
+  <style>
+    table, th, td {
+              border:2px solid black;
+              text-align: center;            
+
+            }
+            th{
+              background-color: #234027;
+              color:white;
+              text-align: center;
+			  min-width:100px;
+              
+            }
+
+            .divScroll {
+              padding-left:1% ;
+			/*overflow:scroll;*/
+			width: 1200px;
+			  height: 600px;
+			}
+
+
+
+
+			.tooltip-wrap {
+			  position: relative;
+			}
+			.tooltip-wrap .tooltip-content {
+			  display: none;
+			  position: absolute;
+			  bottom: 5%;
+			  left: 5%;
+			  right: 5%;
+			  background-color: #fff;
+			  padding: .5em;
+			}
+			.tooltip-wrap:hover .tooltip-content {
+			  display: block;
+			}
+			
+			
+			
+
+.title {
+        display: flex;
+        justify-content: space-between;
+        border-top: 5px solid #969696;
+        height: 30px;
+        line-height: 30px;
+        padding: 5px 15px;
+        font-size: 18px;
+        color: #212121;
+        margin-bottom: 20px;
+      }
+
+
+</style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="./static/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+  <div class="col-lg-12 row">
+	<div class="col-lg-9">		
+		<a href="attdashboard"><img src="./static/images/logo.png" alt="logo" class="img-fluid" style="max-width: 12rem; height: 4rem;"></a>
+	</div>
+
+	<div class="col-lg-3 ">		
+		
+ <!-- Top navigation-->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+				  <a class="nav-link" aria-current="page" href="attdashboard">
+					  <i class="fa fa-bar-chart text-danger"></i>  Dashboard
+				  </a>
+				</li>
+				<li class="nav-item d-none d-sm-inline-block">
+					<a href="hrattendance" class="nav-link"><i class="fa fa-id-badge text-danger"></i> Attendance</a>
+				</li>
+				<!--
+				<div class="vr"></div>
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  <i class="fas fa-cog"></i>
+				  </a>
+				  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="#"><i class="fas fa-folder-open"></i> My Account</a></li>
+					<li><a class="dropdown-item" href="#"><i class="fas fa-exchange-alt"></i> Change Password</a></li>
+				  </ul>
+				</li>
+				-->
+				<li class="nav-item text-center">
+				  <a class="nav-link bg-danger" aria-current="page" href="login">
+					  <i class="fas fa-sign-out-alt text-white"></i>
+				  </a>
+				</li>
+			  </ul>
+		</div>
+</nav>
+	</div>
+  </div>
+  
+  <!-- /.navbar -->
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="">
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="col-sm-12">
+	
+	<form id="upload-file" method="post" enctype="multipart/form-data">
+	<div class="row title" >
+		<h1 class="text-center" style="font-weight:bolder;">Employee Information</h1>
+	</div>
+	<br/>
+<h5 style="font-weight:bolder;color:blue;">Basic Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-8">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Offer Id :
+				<input type="text" id="empid" name="empid" placeholder="Enter Emp code" value="{{empid}}"  class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Employee Name:
+				<input type="text" id="ename" name="ename" readonly placeholder="Enter Emp name" value="{{empname}}"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Gender:
+					<select id="gender" name="gender"  class="form-control">
+						<option>Select Gender</option>
+						<option>Male</option>
+						<option>Female</option>
+						<option>Other</option>
+					</select>
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				D.O.B:
+				<input type="date" id="edob" name="edob" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Email:					
+				<input type="text" id="email" name="email" placeholder="Email"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Mobile:					
+				<input type="text" id="phone" name="phone" placeholder="Phone"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Landline:					
+				<input type="text" id="landline" name="landline" placeholder="Landline"   class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Blood Group:		
+					<select id="bgroup" name="bgroup"  class="form-control">
+						<option>Select group</option>
+						<option>A+ve</option>
+						<option>A-ve</option>
+						<option>B+ve</option>
+						<option>B-ve</option>
+						<option>O+ve</option>
+						<option>O-ve</option>
+						<option>AB+ve</option>
+						<option>AB-ve</option>
+					</select>
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				System Name:					
+				<input type="text" id="sname" name="sname" readonly value="" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Employee Category:		
+					<select id="ecat" name="ecat"  class="form-control">
+						<option>Select Category</option>
+						{% if empcatdata is defined %}
+							{% for item in empcatdata %} 
+								<option>{{item[0]}}</option>
+							{% endfor %}
+						{% endif %}
+					</select>
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Emergency Contact Name:					
+				<input type="text" id="emeconname" name="emeconname" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Emergency Contact #:	
+				<input type="text" id="emeconph" name="emeconph" class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Father Name:					
+				<input type="text" id="fname" name="fname" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Father DOB:	
+				<input type="date" id="fdob" name="fdob" class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Mother Name:					
+				<input type="text" id="mname" name="mname" class="form-control" /> 
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				Mother DOB:	
+				<input type="date" id="mdob" name="mdob" class="form-control" /> 
+			</div>
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				Permanent Address:					
+				<textarea id="paddr" name="paddr" class="form-control" rows="1"> </textarea>
+			</div>
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				Temporary Address:					
+				<textarea id="taddr" name="taddr" class="form-control" rows="1"> </textarea>
+			</div>
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				Status:
+					<select id="mstatus" name="mstatus" onchange="spouseval()"  class="form-control col-lg-6">
+						<option>Select Status</option>
+						<option>Single</option>
+						<option>Married</option>
+					</select>
+			</div>
+			
+			
+			<div class="col-lg-6" id="spnamediv" style="float:left;margin-top: 5px;display:none;">
+				Spouse Name:					
+				<input type="text" id="sponame" name="sponame" class="form-control" /> 
+			</div>
+			<div class="col-lg-6"  id="spdobdiv" style="float:left;margin-top: 5px;display:none;">
+				Spouse DOB:					
+				<input type="date" id="spodob" name="spodob" class="form-control" /> 
+			</div>
+			<script>
+				function spouseval()
+				{
+					var mstatus=document.getElementById('mstatus').value;
+					if(mstatus=="Married")
+					{
+						document.getElementById('spnamediv').style.display="block";
+						document.getElementById('spdobdiv').style.display="block";
+					}
+					else{
+						document.getElementById('spnamediv').style.display="none";
+						document.getElementById('spdobdiv').style.display="none";
+					}
+				}
+			</script>
+			
+		</div>
+		
+		<div class="col-lg-4">
+			<img src="static/images/noimage.jpg" id="imgpic" name="imgpic" class="col-lg-12" style="height:400px;margin-top:25px;" />
+			
+				<input type="file" id="imgfile" name="imgfile" class="col-lg-5" style="float:left;"  accept=".png,.jpg" />
+		</div>
+		
+	</div>		
+
+
+
+<h5 style="font-weight:bolder;color:blue;">Education and ID Proofs</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Select Qualification :</label>
+					<select id="qual" name="qual" class="col-lg-3 form-control" style="float:left;">
+						<option value="0">Select Qualification</option>
+						{% if qualdata is defined %}
+						{% for item in qualdata %} 
+						<option>{{item[0]}}</option>
+						{% endfor %}
+					{% endif %}
+					
+					</select>
+				<input type="file" id="qualfile" name="qualfile" class="col-lg-2" style="float:left;" accept=".pdf" />
+				<input type="button" value="Add" id="btn_addqual" style="float:left;" class="btn btn-danger col-lg-1" />
+			</div>
+			<div class="col-lg-12" id="qualtablediv" style="float:left;margin-top: 5px;display:none;padding:20px;">
+				<table id="qualtable" style="width:100%;">
+					  
+				</table>
+			</div>
+			
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Govt. Identity Cards :</label>
+					<select id="govtidcard" name="govtidcard"  class="col-lg-3 form-control" style="float:left;">
+						<option value="0">Select Id Proof</option>
+						{% if idproofdata is defined %}
+						{% for item in idproofdata %} 
+						<option>{{item[0]}}</option>
+						{% endfor %}
+					{% endif %}
+					</select>
+				<input type="file" id="idcardfile" name="idcardfile" class="col-lg-2" style="float:left;" />
+				<input type="button" value="Add" id="btn_addidcard" style="float:left;" class="btn btn-danger col-lg-1" />
+			</div>
+			
+			<div class="col-lg-12" id="idcardtablediv" style="float:left;margin-top: 5px;display:none;padding:20px;">
+				<table id="idcardtable" style="width:100%;">
+					  
+				</table>
+			</div>
+			
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Scanned Copy of Letter :</label>
+					<select id="scanletter" name="scanletter"  class="col-lg-3 form-control" style="float:left;">
+					<option value="0">--Select Letter Types--</option>
+					<option>Transact Offer Letter</option>
+					<option>Transact Appointment Letter</option>
+					<option>Transact Increment Letter</option>
+					<option>Transact Releiving Letter</option>
+					<option>Previous Company Offer Letter</option>
+					<option>Previous Company Releiving Letter</option>
+					<option>Previous Company Experience Letter</option>
+					<option>Previous Company Increment Letter</option>
+					<option>Previous Company Payslip</option>
+					<option>Resume</option>
+					</select>
+				<input type="file" id="scanletterfile" name="scanletterfile" class="col-lg-2" style="float:left;" accept=".pdf,.jpg,.png" />
+					<select id="comporder" name="comporder"  class="col-lg-2 form-control" style="float:left;">
+					<option value="0">Company Order</option>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					</select>
+				<input type="button" value="Add Letter" id="btn_addscanletter" style="float:left;" class="btn btn-danger col-lg-1" />
+			</div>
+			
+			
+			<div class="col-lg-12" id="scanlettertablediv" style="float:left;margin-top: 5px;display:none;padding:20px;">
+				<table id="scanlettertable" style="width:100%;">
+					  
+				</table>
+			</div>
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+			
+				<label style="float:left;" class="col-lg-2">Covid Vaccination :</label>
+					<select id="cvaacine" name="cvaacine"  class="col-lg-3 form-control" style="float:left;">
+						<option value="">Select</option>
+						<option>Partially Vaccinated</option>
+						<option>Fully Vaccinated</option>
+						<option>Booster Vaccination Done</option>
+						<option>Not Vaccinated</option>
+					</select>
+					
+				<input type="file" id="covidreport" name="covidreport" class="col-lg-4" style="float:left;" />
+				<input type="button" value="Add Report" id="btn_addcovidreport" style="float:left;" class="btn btn-danger col-lg-1" />
+			</div>
+			<div class="col-lg-12" id="covidreptablediv" style="float:left;margin-top: 5px;display:none;padding:20px;">
+				<table id="covidreptable" style="width:100%;">
+					  
+				</table>
+			</div>
+			
+		</div>
+		
+	</div>		
+
+
+
+<h5 style="font-weight:bolder;color:blue;">Employee Status Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Employee Status :</label>
+					<select id="estatus" name="estatus" class="form-control" style="float:left;">						
+						<option>Training</option>
+						<option>Working</option>
+						<option>Absconding</option>
+						<option>Teminated-Disciplinary</option>
+						<option>Teminated-Performance</option>
+						<option>Resign</option>
+						<option>Not Certified</option>
+					</select>
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Interview Date :</label>
+					<input type="date" id="idate" name="idate" class="form-control" /> 
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Date of Joining :</label>
+					<input type="date" id="doj" name="doj" class="form-control" /> 
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Date of Leaving :</label>
+					<input type="date" id="dol" name="dol" class="form-control" readonly /> 
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">B.G Verfied  :</label>
+				<textarea id="bgv" name="bgv" class="form-control" rows="1"> </textarea>
+			</div>
+			
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Certification Date :</label>
+				<input type="date" id="certdate" name="certdate" class="form-control" /> </textarea>
+			</div>
+			
+			
+			<div class="col-lg-12" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Reason of Exit  :</label>
+				<textarea id="reason" name="reason" class="form-control" rows="1" readonly> </textarea>
+			</div>
+			
+			
+			
+			
+			
+		</div>
+		
+	</div>	
+
+
+
+<h5 style="font-weight:bolder;color:blue;">Experience Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-5">Source :</label>
+					<select id="walkinsource" name="walkinsource" class="form-control" style="float:left;">
+						<option>No Source</option>
+						{% if sourcedata is defined %}
+							{% for item in sourcedata %} 
+							<option>{{item[0]}}</option>
+							{% endfor %}
+						{% endif %}
+						
+					</select>
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Experience :</label>
+					<select id="exp" name="exp" class="form-control" onchange="verifyexp()" style="float:left;">
+						<option value="0">Select</option>
+						<option>Fresher</option>
+						<option>Experienced</option>
+					</select>
+			</div>
+			<div class="col-lg-12" id="expdata" style="float:left;margin-top: 5px;display:none;">
+				<div>
+					
+				<label style="float:left;font-weight:bolder;text-decoration:underline;" class="col-lg-12">Previous Experience  </label>
+				</div>
+				
+				
+				<div class="col-lg-2" style="float:left;margin-top: 5px;">
+					<label style="float:left;" class="col-lg-2">Company</label>
+						<input type="text" id="ecomp" name="ecomp" class="form-control" /> 
+				</div>
+				
+				<div class="col-lg-2" style="float:left;margin-top: 5px;">
+					<label style="float:left;" class="col-lg-2">From</label>
+						<input type="date" id="efrom" name="efrom" class="form-control" /> 
+				</div>
+				
+				<div class="col-lg-2" style="float:left;margin-top: 5px;">
+					<label style="float:left;" class="col-lg-2">To</label>
+						<input type="date" id="eto" name="eto" class="form-control" /> 
+				</div>
+				
+				<div class="col-lg-2" style="float:left;margin-top: 5px;">
+					<label style="float:left;" class="col-lg-2">Designation</label>
+						<input type="text" id="edesig" name="edesig" class="form-control" /> 
+				</div>
+				
+				<div class="col-lg-2" style="float:left;margin-top: 5px;">
+					<label style="float:left;" class="col-lg-2">Certificate</label>
+					<input type="file" id="expcert" name="expcert" style="float:left;" />
+				</div>
+				
+				<div class="col-lg-2" style="float:left;margin-top:35px;">
+					<input type="button" value="Add" id="btn_addcertletter" style="float:left;" class="btn btn-danger" />
+				</div>
+				<div class="col-lg-12" id="expcerttablediv" style="float:left;margin-top: 5px;display:none;padding:20px;">
+					<table id="expcerttable" style="width:100%;">
+						  
+					</table>
+				</div>
+			</div>
+			
+			<script>
+			function verifyexp()
+			{
+				var exp=document.getElementById('exp').value;
+				if(exp=="Experienced")
+				{
+					document.getElementById('expdata').style.display="block";
+				}
+				else
+				{
+					document.getElementById('expdata').style.display="none";
+				}
+			}
+			</script>
+			
+			
+		</div>
+		
+	</div>	
+    
+    
+
+<h5 style="font-weight:bolder;color:blue;">Process Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Departments:</label>
+					<select id="depts" name="depts" class="form-control" style="float:left;">
+						<option>-- Select Department --</option>
+						{% if deptsdata is defined %}
+							{% for item in deptsdata %} 
+							<option>{{item[0]}}</option>
+							{% endfor %}
+						{% endif %}
+						
+					</select>
+			</div>
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Process :</label>					
+					<select id="process" name="process" class="form-control" style="float:left;">
+						<option value="0">-- Select --</option>
+						{% if processdata is defined %}
+							{% for item in processdata %} 
+							<option>{{item[0]}}</option>
+							{% endfor %}
+						{% endif %}
+						
+					</select>
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Position :</label>					
+					<select id="position" name="position" class="form-control" style="float:left;">
+						<option value="0">-- Select --</option>
+						
+						{% if positionsdata is defined %}
+							{% for item in positionsdata %} 
+							<option>{{item[0]}}</option>
+							{% endfor %}
+						{% endif %}
+					
+					</select>
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Manager :</label>					
+					<select id="mgrnm" name="mgrnm" class="form-control" style="float:left;">
+						<option value="">Select Manager</option>
+					
+					</select>
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Asst. Manager :</label>					
+					<select id="amgrnm" name="amgrnm" class="form-control" style="float:left;">
+					<option value="">Select Asst. Manager</option>
+					<!--<option>106-Bopanna C K</option>-->
+					</select>
+			</div>
+			
+			
+		</div>
+		
+	</div>	
+    
+    
+
+    
+
+<h5 style="font-weight:bolder;color:blue;">Payment Information</h5>
+	<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+		<div class="col-lg-12">
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">CTC:</label>
+					<input type="text" id="ctc" name="ctc" class="form-control" onchange="calculatesalary()" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Basic Salary:</label>
+					<input type="text" id="bsal" name="bsal" class="form-control" onchange="calculatesalary1()" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Gross Salary:</label>
+					<input type="text" id="gsal" name="gsal" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Base Pay:</label>
+					<input type="text" id="bpay" name="bpay" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Net Salary:</label>
+					<input type="text" id="nsal" name="nsal" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">SL Adherence:</label>
+					<input type="text" id="sladh" name="sladh" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Effective Date:</label>
+					<input type="date" id="effdate" name="effdate" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Bank Name:</label>					
+					<select id="bname" name="bname" class="form-control" style="float:left;">
+
+						<option value="0">Select Bankname</option>
+						<option>No Source</option>
+						{% if banksdata is defined %}
+							{% for item in banksdata %} 
+							<option>{{item[0]}}</option>
+							{% endfor %}
+						{% endif %}
+						
+				</select>			
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">IFSC Code:</label>
+					<input type="text" id="ifsc" name="ifsc" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Name as per Account:</label>
+					<input type="text" id="accname" name="accname" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Branch Name:</label>
+					<input type="text" id="branchname" name="branchname" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Part Timer Wage/Hour:</label>
+					<input type="text" id="partwagehr" name="partwagehr" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Bank Ac/No.:</label>
+					<input type="text" id="baccnum" name="baccnum" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-3" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Medical Insurance No:</label>
+					<input type="text" id="minsnum" name="minsnum" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-3" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-12">Medical Insurance Amt:</label>
+					<input type="text" id="minsamt" name="minsamt" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Old PF:</label>
+					<input type="text" id="opf" name="opf" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">Old ESI:</label>
+					<input type="text" id="oesi" name="oesi" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Enable P.F [Forcibly]:</label>
+					<input type="radio" id="enablepf" checked name="enablepf" value="1" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Enable ESI [Forcibly]:</label>
+					<input type="radio" id="enableesi" checked name="enableesi" value="3" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Disable P.F [Forcibly]:</label>
+					<input type="radio" id="disablepf" name="enablepf" value="2" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Disable ESI [Forcibly]:</label>
+					<input type="radio" id="disableesi" name="enableesi"  value="4" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">UAN:</label>
+					<input type="text" id="uan" name="uan" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-2">ESI #:</label>
+					<input type="text" id="esinum" name="esinum" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Employer PF:</label>
+					<input type="text" id="emplyrpf" name="emplyrpf" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Employee PF:</label>
+					<input type="text" id="emppf" name="emppf" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Employer ESIC:</label>
+					<input type="text" id="emplyresic" name="emplyresic" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Employee ESIC:</label>
+					<input type="text" id="empesic" name="empesic" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				<label style="float:left;" class="col-lg-4">Professional Tax:</label>
+					<input type="text" id="proftax" name="proftax" class="form-control" /> 				
+			</div>
+			
+			<div class="col-lg-6" style="float:left;margin-top: 5px;">
+				. 				
+			</div>
+			
+		</div>
+		<script>
+			function calculatesalary()
+			{
+				debugger;
+				var maxsal=0;
+				var minsal=0;
+				var ctc=document.getElementById('ctc').value;
+				var process=document.getElementById('process').value;
+				var position=document.getElementById('position').value;
+				var isallowed=1;
+				$.ajax({
+            type: 'GET',
+            url: '/verifyctcval',
+			
+        contentType: 'application/json;charset=UTF-8',
+            data: {
+            'process': process,
+            'position': position
+			},
+            
+        dataType:"json",
+            success: function(data) {
+				dataval=data.split(',');
+
+				minsal=dataval[0];
+				maxsal=dataval[1];
+				if(parseFloat(ctc)>parseFloat(maxsal) && parseFloat(ctc)<parseFloat(minsal))
+				{
+
+				//return false;
+				}
+				else{
+				alert('Salary range should be between '+minsal+' and '+maxsal);
+				return false;
+				}
+            },
+			 error: function(data) {
+               
+            }
+        });
+
+		
+				ctc=parseFloat(ctc);
+				var bsal=6500;
+				var emplyrpfper=0.13;
+				var emplyresicper=0.0325;
+				var emppfper=0.12;
+				var empesicper=0.0075;
+				var pt=200;
+				var emplyresic=emplyresicper*ctc;
+				var emplyrpf=emplyrpfper*bsal;
+				var gsal=ctc-(emplyresic+emplyrpf);
+				var empesic=empesicper*gsal;
+				var emppf=emppfper*bsal;
+				
+				if(gsal<15000)
+				{
+					pt=0;
+				}
+				var netsal=gsal-(empesic+emppf+pt);
+				
+				document.getElementById('bsal').value=bsal.toFixed(2);
+					document.getElementById('gsal').value=gsal.toFixed(2);
+					document.getElementById('nsal').value=netsal.toFixed(2);
+					document.getElementById('proftax').value=pt;
+					document.getElementById('emplyrpf').value=emplyrpf.toFixed(2);
+					document.getElementById('emppf').value=emppf.toFixed(2);
+					document.getElementById('emplyresic').value=emplyresic.toFixed(2);
+					document.getElementById('empesic').value=empesic.toFixed(2);
+				/*
+				if(ctc=="19000")
+				{
+					document.getElementById('bsal').value="6500";
+					document.getElementById('gsal').value="17537.5";
+					document.getElementById('nsal').value="16425.9";
+					document.getElementById('proftax').value="200";
+					document.getElementById('emplyrpf').value="845";
+					document.getElementById('emppf').value="780";
+					document.getElementById('emplyresic').value="617.5";
+					document.getElementById('empesic').value="132";
+				}
+				else if(ctc=="228000")
+				{
+					document.getElementById('bsal').value="78000";
+					document.getElementById('gsal').value="210450";
+					document.getElementById('nsal').value="197111.6";
+					document.getElementById('proftax').value="200";
+					document.getElementById('emplyrpf').value="845";
+					document.getElementById('emppf').value="780";
+					document.getElementById('emplyresic').value="570";
+					document.getElementById('empesic').value="103";
+				}
+				else if(ctc=="13500")
+				{
+					document.getElementById('bsal').value="6500";
+					document.getElementById('gsal').value="12216.2";
+					document.getElementById('nsal').value="11344.6";
+					document.getElementById('proftax').value="0";
+					document.getElementById('emplyrpf').value="845";
+					document.getElementById('emppf').value="780";
+					document.getElementById('emplyresic').value="438.7";
+					document.getElementById('empesic').value="91.6";
+				}
+				else if(ctc=="162000")
+				{
+					document.getElementById('bsal').value="78000";
+					document.getElementById('gsal').value="162000";
+					document.getElementById('nsal').value="136135.5";
+					document.getElementById('proftax').value="0";
+				}
+				else if(ctc=="50000")
+				{
+					document.getElementById('bsal').value="15000";
+					document.getElementById('gsal').value="48050";
+					document.getElementById('nsal').value="44050";
+					document.getElementById('proftax').value="200";
+					document.getElementById('emplyrpf').value="1950";
+					document.getElementById('emppf').value="1800";
+					document.getElementById('emplyresic').value="0";
+					document.getElementById('empesic').value="0";
+				}
+				else if(ctc=="600000")
+				{
+					document.getElementById('bsal').value="180000";
+					document.getElementById('gsal').value="576600";
+					document.getElementById('nsal').value="528600";
+					document.getElementById('proftax').value="200";
+				}
+				*/
+			}
+			
+			function calculatesalary1()
+			{
+				var ctc=document.getElementById('ctc').value;
+				ctc=parseFloat(ctc);
+				
+				var bsal=document.getElementById('bsal').value;
+				bsal=parseFloat(bsal);
+				var emplyrpfper=0.13;
+				var emplyresicper=0.0325;
+				var emppfper=0.12;
+				var empesicper=0.0075;
+				var pt=200;
+				var emplyresic=emplyresicper*ctc;
+				var emplyrpf=emplyrpfper*bsal;
+				var gsal=ctc-(emplyresic+emplyrpf);
+				var empesic=empesicper*gsal;
+				var emppf=emppfper*bsal;
+				
+				if(gsal<15000)
+				{
+					pt=0;
+				}
+				var netsal=gsal-(empesic+emppf+pt);
+				
+				document.getElementById('bsal').value=bsal.toFixed(2);
+					document.getElementById('gsal').value=gsal.toFixed(2);
+					document.getElementById('nsal').value=netsal.toFixed(2);
+					document.getElementById('proftax').value=pt;
+					document.getElementById('emplyrpf').value=emplyrpf.toFixed(2);
+					document.getElementById('emppf').value=emppf.toFixed(2);
+					document.getElementById('emplyresic').value=emplyresic.toFixed(2);
+					document.getElementById('empesic').value=empesic.toFixed(2);
+			}
+		</script>
+		
+	</div>	
+    
+        
+<h5 style="font-weight:bolder;color:blue;">Employee Document Status</h5>
+<div class="row" style="background-color:#7d7d879c;padding:20px 0px;margin:0px 30px;">
+	<div class="col-lg-12">
+		<div class="col-lg-6" style="float:left;margin-top: 5px;">
+			<label style="float:left;" class="col-lg-5">Document Status :</label>
+				<select id="edstatus" name="edstatus" class="form-control" style="float:left;">
+					<option value="0">Select Status</option>
+					<option>Partial</option>
+					<option>Complete</option>
+				</select>
+		</div>
+	</div>
+</div>			
+	
+	<div class="col-lg-12 row">
+		<input type="button" value="Save Data" id="btn_saveonboarddata" style="float:left;margin:10px 30px;left:20%;" class="btn btn-danger col-lg-2" />
+		<input type="button" value="Reset" id="btn_resetonboarddata" style="float:left;margin:10px 30px;left:20%;" class="btn btn-danger col-lg-2" />
+      
+    </div>
+	
+  </form>
+  </div>
+
+  
+  <!-- /.content-wrapper -->
+  <!--<footer class="main-footer">
+   <strong>Copyright &copy; 
+    <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>  <a href="https://transactglobal.com/">Transact BPO Services India Pvt Ltd </a>.</strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block">
+       <b>Version</b> 1.0.0-Beta   </div>
+  </footer>-->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<!-- <script src="plugins/jquery/jquery.min.js"></script> -->
+<!-- jQuery UI 1.11.4 -->
+<!-- <script src="plugins/jquery-ui/jquery-ui.min.js"></script> -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!-- <script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script> -->
+<!-- <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link href="/resources/demos/style.css" rel="stylesheet" /> -->
+<!-- Bootstrap 4 -->
+<!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+<!-- ChartJS -->
+<!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
+<!-- Sparkline -->
+<!-- <script src="plugins/sparklines/sparkline.js"></script> -->
+<!-- JQVMap -->
+<!-- <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+<!-- jQuery Knob Chart -->
+<!-- <script src="plugins/jquery-knob/jquery.knob.min.js"></script> -->
+<!-- daterangepicker -->
+<!-- <script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script> -->
+<!-- Tempusdominus Bootstrap 4 -->
+<!-- <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script> -->
+<!-- Summernote -->
+<!-- <script src="plugins/summernote/summernote-bs4.min.js"></script> -->
+<!-- overlayScrollbars -->
+<!-- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+<!-- AdminLTE App -->
+<script src="./static/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="dist/js/demo.js"></script> -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="dist/js/pages/dashboard.js"></script> -->
+<!--
+<script>
+$(document).ready(function(){
+    $('#tblData').after('<div id="nav"></div>');
+    var rowsShown = 20;
+    var rowsTotal = $('#tblData tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a href="#" rel="'+i+'">'+pageNum+'</a> ');
+    }
+    $('#tblData tbody tr').hide();
+    $('#tblData tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#tblData tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
+</script>-->
+
+
+<script>
+/*
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} */
+</script>
+
+
+		
+<script>
+
+	//Pagination
+	function pageloader()
+	{
+		var pnum=document.getElementById('pgnum').value;
+		window.location='paginationload?pgnum='+pnum;
+	}
+	
+	debugger;
+	const urlParams = new URLSearchParams(window.location.search);
+	const myParam = urlParams.get('pgnum');
+	const month = urlParams.get('month');
+	const year = urlParams.get('year');
+	const secode = urlParams.get('secode');
+	const procnm = urlParams.get('procnm');
+	const mgrnm = urlParams.get('mgrnm');
+	if(myParam!=null)
+	{
+		document.getElementById('pgnum').value=myParam;
+	}
+	if(month!=null)
+	{
+		document.getElementById('mon').value=month;
+	}
+	if(secode!=null)
+	{
+		document.getElementById('secode').value=secode;
+	}
+	if(procnm!=null)
+	{
+		document.getElementById('procnm').value=procnm;
+	}
+	if(mgrnm!=null)
+	{
+		document.getElementById('mgrnm').value=mgrnm;
+	}
+	if(year!=null)
+	{
+		document.getElementById('year').value=year;
+	}
+	
+			
+
+
+
+
+
+
+//Image reading
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#imgpic').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgfile").change(function(){
+debugger;
+    readURL(this);
+});			
+
+
+
+var today = new Date();
+var dd = today.getDate();
+dd=parseInt(dd);
+dd=dd;
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear()-18;
+
+if (dd < 10) {
+   dd = '0' + dd;
+}
+
+if (mm < 10) {
+   mm = '0' + mm;
+} 
+    
+today = yyyy + '-' + mm + '-' + dd;
+document.getElementById("edob").setAttribute("max", today);	
+document.getElementById("fdob").setAttribute("max", today);	
+document.getElementById("mdob").setAttribute("max", today);	
+document.getElementById("spodob").setAttribute("max", today);	
+
+yyyy=yyyy+18;
+today = yyyy + '-' + mm + '-' + dd;
+//document.getElementById("idate").setAttribute("min", today);	
+document.getElementById("doj").setAttribute("min", today);		
+//document.getElementById("dol").setAttribute("min", today);	
+document.getElementById("certdate").setAttribute("min", today);
+document.getElementById("effdate").setAttribute("min", today);
+	
+			
+			
+</script>
+<!-- jQuery -->
+<script src="./static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="./static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="./static/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="./static/plugins/toastr/toastr.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./static/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="./static/dist/js/demo.js"></script>
+
+<script src="{{ url_for('static', filename='restapi.js') }}"></script>
+<script>
+	debugger;
+	//$('td:nth-child(38),th:nth-child(90)').hide();
+</script>
+
+</body>
+</html>

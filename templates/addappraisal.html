@@ -1,0 +1,229 @@
+<html>
+    <head>
+        <title>Appraisal Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+        <script>
+            function myfun()
+            {
+                document.getElementById("body").style.display="";
+            }
+            function chclr(name)
+            {
+                document.getElementById(name).style.backgroundColor = "white";
+            }
+            function calc()
+            {
+                var bs = parseInt(document.getElementById("bs").value);
+                var ibs = parseInt(document.getElementById("ibs").value);
+                var gs = parseInt(document.getElementById("gs").value);
+                var igs = parseInt(document.getElementById("igs").value);
+                var ctc = parseInt(document.getElementById("ctc").value);
+                var ictc = parseInt(document.getElementById("ictc").value);
+                var ns = parseInt(document.getElementById("ns").value);
+                var ins = parseInt(document.getElementById("ins").value);
+
+                if(isNaN(bs))
+                {
+                    document.getElementById("bs").style.backgroundColor = "red";
+                }
+                else if(isNaN(gs))
+                {     
+                    document.getElementById("gs").style.backgroundColor = "red";
+                }
+                else if(isNaN(ctc))
+                {    
+                    document.getElementById("ctc").style.backgroundColor = "red";
+                }
+                else if(isNaN(ns))
+                {    
+                    document.getElementById("ns").style.backgroundColor = "red";
+                }
+                else if(isNaN(ibs))
+                {   
+                    document.getElementById("ibs").style.backgroundColor = "red";
+                }
+                else if(isNaN(igs))
+                {
+                    document.getElementById("igs").style.backgroundColor = "red";   
+                }
+                else if(isNaN(ictc))
+                {    
+                    document.getElementById("ictc").style.backgroundColor = "red";   
+                }
+                else if(isNaN(ins))
+                {                 
+                    document.getElementById("ins").style.backgroundColor = "red";   
+                }
+                else
+                {
+                    document.getElementById("cbs").value=bs+bs*ibs/100;       
+                    document.getElementById("cgs").value=gs+gs*igs/100;
+                    document.getElementById("cctc").value=ctc+ctc*ictc/100;
+                    document.getElementById("cns").value=ns+ns*ins/100;
+                }
+            }
+        </script>
+        
+    </head>
+    <body>
+        <div style="padding: 20px;">
+        <button onclick="myfun()" class="btn-primary" style="padding: 10px;">ADD NEW APPARAISAL</button>
+        </div>
+        <div id="body" style=" display: none;">
+            <div class=" col-xs-12">
+                <div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">        
+<label class=" col-xs-6">Basic Salary</label>
+<input type="text" class="col-xs-6" id="bs" value="{{saldata[0][0]}}" onclick="chclr('bs')"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class="col-xs-6">Gross Salary</label>
+<input type="text" class="col-xs-6" id="gs"  value="{{saldata[0][1]}}"  onclick="chclr('gs')"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class=" col-xs-6">CTC</label>
+<input type="text" class="col-xs-6" id="ctc"  value="{{saldata[0][2]}}"   onclick="chclr('ctc')"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class="col-xs-6">Net Salary</label>
+<input type="text" class="col-xs-6" id="ns" value="{{saldata[0][3]}}"  onclick="chclr('ns')"></div>
+</div>
+            <div class=" col-xs-12" style="padding-top: 20px;">
+            <div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class=" col-xs-6">Inc. in percent</label>
+<input type="text" class="col-xs-6" id="ibs" onclick="chclr('ibs')"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class="col-xs-6">Inc. in percent</label>
+<input type="text" class="col-xs-6" id="igs" onclick="chclr('igs')"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class=" col-xs-6">Inc. in percent</label>
+<input type="text" class="col-xs-6" id="ictc" onclick="chclr('ictc')"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class=" col-xs-6">Inc. in percent</label>
+<input type="text" class="col-xs-6" id="ins" onclick="chclr('ins')"></div>
+        </div>
+                        <div class=" col-xs-12" style="padding-top: 20px;">
+                            <center><button class="btn-primary" style="padding: 10px;" onclick="calc()">CALCULATE</button></center>
+                        </div>
+            <div class=" col-xs-12" style="padding-top: 20px;">
+            <div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class=" col-xs-6">Basic Salary</label>
+<input type="text" class="col-xs-6" id="cbs"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class="col-xs-6">Gross Salary</label>
+<input type="text" class="col-xs-6" id="cgs"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class=" col-xs-6">CTC</label>
+<input type="text" class="col-xs-6" id="cctc"></div>
+
+<div class="col-lg-3 col-md-4 col-sm-6" style="padding: 20px;">
+<label class=" col-xs-6">Net Salary</label>
+<input type="text" class="col-xs-6" id="cns"></div>
+        </div>
+            
+ <div class="col-xs-12">
+     <div class="col-md-8 col-sm-6 col-xs-12" style="padding-top: 20px;">
+             <label class="col-lg-2 col-md-3 col-xs-6" >Comments</label>
+             <textarea rows="2" cols="40" class="col-lg-10 col-md-9 col-xs-6" id="comment" name="comment"></textarea>
+          </div>
+     <div class="col-md-4 col-sm-6 col-xs-12">
+              <label class=" col-lg-4 col-md-5 col-xs-6" style="text-align: left;padding-top: 20px;">Effective Date</label>
+              <div class=" col-lg-8 col-md-7 col-xs-6" style="padding-top: 20px;padding-left: 0px;">
+     <select id="mon" name="mon">
+         <option>Jan</option>    
+         <option>Feb</option>
+         <option>March</option>
+         <option>April</option>
+         <option>May</option>
+         <option>June</option>
+         <option>July</option>
+         <option>Aug</option>
+         <option>Sep</option>
+         <option>Oct</option>
+         <option>Nov</option>
+         <option>Dec</option>
+     </select>
+       <select id="year" name="year">
+         <option>2021</option>    
+         <option>2022</option>
+         <option>2023</option>
+         <option>2024</option>
+         <option>2025</option>
+         <option>2026</option>
+         <option>2027</option>
+         <option>2028</option>
+         <option>2029</option>
+         <option>2030</option>
+         <option>2031</option>
+         <option>2032</option>
+     </select>
+              </div>
+          </div>
+ </div>
+            <div class=" col-xs-12" style="padding-top: 20px;">
+                <center><button class="btn-primary" style="padding: 10px;" id="saveappraisal" >Save</button> <button class="btn-primary" style="padding: 10px;">Cancel</button></center>
+                <input type="text" id="empcode" name="empcode" value="{{empcode}}" style="font-size:1px;" />
+            </div>
+
+    </div>
+        
+            <div class="table-responsive col-lg-12" style="padding-top: 20px;">
+                          <table class="table table-sm table-bordered">
+			 
+                            <thead class="bg-primary text-white rounded-3 border-primary">
+                                             <tr>
+                <th class="fs-7 text-nowrap">Basic Salary</th>  
+		 <th class="fs-7 text-nowrap">Gross Salary</th>
+                  <th class="fs-7 text-nowrap">CTC</th>
+	          <th class="fs-7 text-nowrap">Net Salary</th>
+		<th class="fs-7 text-nowrap">Effective Date</th>
+		<th class="fs-7 text-nowrap">Comments</th>
+		<th class="fs-7 text-nowrap">Status</th>
+		<th class="fs-7 text-nowrap">Approval Date</th>
+                <th class="fs-7 text-nowrap">Delete</th>
+
+                  
+                </tr>
+                </thead>
+                <tbody>
+                {% if appraisaldata is defined %}
+                {% for val in appraisaldata %}
+                
+                <tr>
+                    <td>{{val[2]}}</td>
+                    <td>{{val[3]}}</td>
+                    <td>{{val[4]}}</td>
+                    <td>{{val[5]}}</td>
+                    <td>{{val[6]}}</td>
+                    <td>{{val[7]}}</td>
+                    <td>{{val[8]}}</td>
+                    <td>{{val[9]}}</td>
+                   <!-- <td><a href="roleedit<i class="fa fa-edit" aria-hidden="true" style="color:red"></i></td>-->
+                    <td><a href="appraisaldelete?id={{val[0]}}&empcode={{val[1]}}"><i class="fa fa-trash" aria-hidden="true" style="color:red"></i></a></td>
+                </tr>
+                            
+                {% endfor %}
+            {% endif %}	
+				
+                </tbody>
+		
+				
+</table>
+        </div>
+        
+<script src="{{ url_for('static', filename='restapi.js') }}"></script>
+    </body>
+</html>

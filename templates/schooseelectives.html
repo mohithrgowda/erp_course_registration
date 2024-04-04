@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Student Dashboard</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="./static/assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="./static/css/bootstrap.css" rel="stylesheet" />
+        <link href="./static/css/dashboard.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      
+  <style>
+    table, th, td {
+              border:1px solid rgb(241, 235, 235);
+              text-align: center;            
+
+            }
+            th{
+              /* background-color: #234027; */
+              color:white;
+              text-align: center;
+			  min-width:100px;
+              
+            }
+
+            .divScroll {
+              padding-left:1% ;
+			/*overflow:scroll;*/
+			width: 1200px;
+			  height: 600px;
+			}
+
+
+             .bg-darkblue {
+				 background-color: #3459E9 !important;
+				 opacity: 1!important;
+			 }
+
+             .border-darkblue {
+				 border-color: #3459E9 !important;
+			 }
+			 
+            .fs-7 {
+            font-size: 0.75rem !important;
+            }
+
+            .fs-8 {
+            font-size: 0.55rem !important;
+            }
+</style>
+
+
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  
+  
+  
+  <!-- DataTables -->
+  <link rel="stylesheet" href="./static/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="./static/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="./static/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+
+
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper" >
+                <div class="sidebar-heading text-break border-bottom bg-light text-center">
+                    <a href="attdashboard"><img src="./static/images/logo.png" alt="logo" class="img-fluid" style="max-width: 12rem; height: 4rem;"></a>
+                </div>
+                <div class="list-group list-group-flush text-start" style="font-size:13px;height:700px;overflow:scroll;overflow-x: hidden;">
+                  
+                  
+                  <a class="list-group-item list-group-item-action list-group-item-light p-3" href="studenthome" style="color:black;"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                  <a class="list-group-item list-group-item-action list-group-item-light p-3" href="sviewsub" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> View Subjects</a>
+                  <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-primary text-white p-3" href="schooseelectives" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> Choose Electives</a>
+                  <a class="list-group-item list-group-item-action list-group-item-light p-3" href="sdownloadpdf" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> Download</a>
+                  <a class="list-group-item list-group-item-action list-group-item-light p-3" href="login" style="color:black;"><i class="fa fa-bookmark" aria-hidden="true"></i> Logout</a>               
+                    
+	               
+              </div>
+                       
+            </div>
+            <!-- Page content wrapper-->
+            <div class="col-lg-10 col-xs-12">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-light shadow-none btn-sm" id="sidebarToggle">
+                             <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                              
+                                <li class="nav-item text-center">
+                                  <a class="nav-link bg-danger" aria-current="page" href="login">
+                                      <i class="fas fa-sign-out-alt text-white"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                  <h4 class="my-4">Choose Electives</h4>
+        
+
+        
+      {% if oecdata is defined and oecdata|length > 0 %}        
+			<form id="upload-file" method="post" enctype="multipart/form-data">
+        
+        <h6>Preferences for Open Elective</h6>
+                  <div  class="col-lg-10 col-md-10 col-sm-10 col-xs-10 fs-7">
+                      <table style="width: 100%;">
+                      
+                        <thead class="bg-darkblue text-white border-darkblue">
+                        <tr class="fs-7">
+                          <th>ID</th>
+                          <th>Select</th>
+                          <th>Subject Code</th>
+                          <th>Subject</th>
+                          <th>Semester</th>
+                          <th>Credits</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                              {% for val in oecdata %}
+                              
+                              <tr>
+                                  <td>{{loop.index}}</td>
+                                  <td><input type="checkbox" id="{{loop.index}}" name="{{loop.index}}" /></td>
+                                  <td><input type="text" id="scode{{loop.index}}" name="scode{{loop.index}}" value="{{val[6]}}" readonly /> </td>
+                                  <td><input type="text" id="sub{{loop.index}}" name="sub{{loop.index}}" value="{{val[1]}}" readonly /></td>
+                                  <td><input type="text" id="sem{{loop.index}}" name="sem{{loop.index}}" value="{{val[4]}}" readonly /></td>
+                                  <td><input type="text" id="cred{{loop.index}}" name="cred{{loop.index}}" value="{{val[5]}}" readonly /></td>
+                              </tr>
+                                          
+                              {% endfor %}
+                        
+                            
+                        </tbody>
+                      </table>
+                  </div> 
+                  <br/>
+                  <input type="button" class="btn btn-danger col-4 form-control fs-7" id="btn_saveoecpref"  name="btn_saveoecpref"  value="Save OEC Preferences" />
+                  <br/>
+					</form>
+  {% endif %}	
+
+      <br/>
+      <br/>
+      
+      {% if pecdata is defined and pecdata|length > 0 %}
+			<form id="upload-file1" method="post" enctype="multipart/form-data">
+        
+        <h6>Preferences for Professional Elective</h6>
+                  <div  class="col-lg-10 col-md-10 col-sm-10 col-xs-10 fs-7">
+                      <table style="width: 100%;">
+                      
+                        <thead class="bg-darkblue text-white border-darkblue">
+                        <tr class="fs-7">
+                          <th>ID</th>
+                          <th>Select</th>
+                          <th>Subject Code</th>
+                          <th>Subject</th>
+                          <th>Semester</th>
+                          <th>Credits</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                              {% for val in pecdata %}
+                              
+                              <tr>
+                                  <td>{{loop.index}}</td>
+                                  <td><input type="checkbox" id="{{loop.index}}" name="{{loop.index}}" /></td>
+                                  <td><input type="text" id="scode{{loop.index}}" name="scode{{loop.index}}" value="{{val[6]}}" readonly /> </td>
+                                  <td><input type="text" id="sub{{loop.index}}" name="sub{{loop.index}}" value="{{val[1]}}" readonly /></td>
+                                  <td><input type="text" id="sem{{loop.index}}" name="sem{{loop.index}}" value="{{val[4]}}" readonly /></td>
+                                  <td><input type="text" id="cred{{loop.index}}" name="cred{{loop.index}}" value="{{val[5]}}" readonly /></td>
+                              </tr>
+                                          
+                              {% endfor %}
+                            
+                        </tbody>
+                      </table>
+                  </div> 
+                  <br/>
+                  <input type="button" class="btn btn-danger col-4 form-control fs-7" id="btn_savepecpref"  name="btn_savepecpref"  value="Save PEC Preferences" />
+                  <br/>
+					</form>
+          
+          {% endif %}	
+                
+              </div>
+            </div>
+        </div>
+		
+
+<script src="./static/masterrestapi.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="./static/js/bootstrap.js"></script>
+        <!-- Core theme JS-->
+        <script src="./static/js/dashboard.js"></script>
+	
+    </body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TransactGlobal | Dashboard</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./static/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+ <!--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <!-- Tempusdominus Bootstrap 4 -->
+ <!--  <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css"> -->
+  <!-- iCheck -->
+  <!--  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css"> -->
+ <!--  <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css"> -->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="./static/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <!-- <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css"> -->
+  <!-- summernote -->
+  <link rel="stylesheet" href="./static/plugins/summernote/summernote-bs4.min.css">
+  
+  
+ 
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+ 
+ <!-- <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" /> 
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>-->
+ <!--<link href="/resources/demos/style.css" rel="stylesheet" /> -->
+ 
+ 
+ 
+ 
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="./static/plugins/fontawesome-free/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="./static/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="./static/plugins/toastr/toastr.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./static/dist/css/adminlte.min.css">
+  
+  <style>
+    table, th, td {
+              border:2px solid black;
+              text-align: center;            
+
+            }
+            th{
+              background-color: #234027;
+              color:white;
+              text-align: center;
+			  min-width:100px;
+              
+            }
+
+            .divScroll {
+              padding-left:1% ;
+			/*overflow:scroll;*/
+			width: 1200px;
+			  height: 600px;
+			}
+
+
+
+
+			.tooltip-wrap {
+			  position: relative;
+			}
+			.tooltip-wrap .tooltip-content {
+			  display: none;
+			  position: absolute;
+			  bottom: 5%;
+			  left: 5%;
+			  right: 5%;
+			  background-color: #fff;
+			  padding: .5em;
+			}
+			.tooltip-wrap:hover .tooltip-content {
+			  display: block;
+			}
+			
+			
+			
+
+.title {
+        display: flex;
+        justify-content: space-between;
+        border-top: 5px solid #969696;
+        height: 30px;
+        line-height: 30px;
+        padding: 5px 15px;
+        font-size: 18px;
+        color: #212121;
+        margin-bottom: 20px;
+      }
+
+
+</style>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="./static/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand navbar-white navbar-light" style="background-color: #ded5d5;">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="attdashboard" class="nav-link">Dashboard</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="hrattendance" class="nav-link">HR Attendance</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="onboarding" class="nav-link">Onboarding</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="verifyemp" class="nav-link">Verify Employee</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="genmail" class="nav-link">HR-OPS View</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="login" class="nav-link">Logout</a>
+      </li>
+    </ul>
+
+    
+  </nav>
+  <!-- /.navbar -->
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="">
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="col-sm-12">
+	<div class="row title" >
+		<span>Employee Add / Search</span>
+	</div>
+	
+	<div class="row"  class="form-control">
+		<div class="col-lg-12">
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				Emp Id :
+				<input type="text" id="empid" name="empid" placeholder="Enter Emp code"   class="form-control" /> 
+			</div>
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				Name:
+				<input type="text" id="ename" name="ename" placeholder="Enter Emp name"   class="form-control" /> 
+			</div>
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				D.O.B:
+				<input type="date" id="edob" name="edob" class="form-control" /> 
+			</div>
+		</div>
+	</div>		
+	
+	<div class="row"  class="form-control">	
+		<div class="col-lg-12">
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				Mobile:
+				<input type="text" id="ephone" name="ephone" class="form-control" /> 
+			</div>
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+					Process:
+					<select id="procnm" name="procnm"  class="form-control">
+					<option value="">Select Process</option>
+					<option>IT</option>
+					<option>Manager</option>
+					<option>HR</option>
+					<option>Wrogn</option>
+					<option>Admin</option>
+					<option>Training Lead</option>
+					<option>Accounts</option>
+					<option>Team Leader</option>
+					<option>Asst Manager</option>
+					<option>Floor Supervisor</option>
+					<option>3M PI</option>
+					<option>3M Home Care</option>
+					<option>Quality</option>
+					<option>1533</option>
+					<option>Concierge Travel</option>
+					<option>Nova</option>
+					<option>JLR</option>
+					<option>Trainer</option>
+					<option>Sintex</option>
+					<option>BPL</option>
+					<option>MIS</option>
+					<option>BBMP</option>
+					<option>Aster</option>
+					<option>Concierge</option>
+					<option>Kotak</option>
+				</select>
+			</div>
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+					Emp Status:
+				<select id="mgrnm" name="mgrnm"  class="form-control">
+					<option value="0">Select Status</option>
+					<option value="1">Working</option>
+					<option value="2">Absconding</option>
+					<option value="3">Teminated-Disciplinary</option>
+					<option value="4">Teminated-Performance</option>
+					<option value="5">Resign</option>
+					<option value="8">Training</option>
+					<option value="9">Not Certified</option>
+				</select>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="col-lg-4 text-center" style="margin-top:5px;left:33.3%;">
+			<input type="button" value="Search Employee" id="btn_searchemp" class="btn btn-danger form-control" />
+			<br/>
+			<h5>[OR]</h5>
+	</div>
+	
+	<div class="row"  class="form-control">
+		<div class="col-lg-12">
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				Emp Id :
+				<input type="text" id="newempid" name="newempid" readonly placeholder="[Auto Generated]"   class="form-control" /> 
+			</div>
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				. 
+			</div>
+			<div class="col-lg-4" style="float:left;margin-top: 5px;">
+				Employee Name:
+				<input type="text" id="newename" name="newename" placeholder="Enter Emp name"   class="form-control" /> 
+			</div>
+			
+		</div>
+	</div>
+	
+	<div class="col-lg-4 text-center" style="margin-top:5px;left:33.3%;">
+			<input type="button" value="New Employee" id="btn_createemp" class="btn btn-danger form-control" />
+	</div>
+    <div class="col-lg-4">
+	<!--Search By Empcode 
+	<input type="text" id="secode" name="secode" placeholder="Enter Emp code" /> 
+	<input type="button" value="Fetch" id="btn_searchempcode" class="btn btn-danger" />
+	<br/><br/>
+	Filter By Process 
+	
+	<input type="button" value="Fetch Data" id="btn_searchbyproc" class="btn btn-danger" />
+	<br/>
+	<br/>
+		Filter By Manager 
+	
+	<input type="button" value="Fetch Data" id="btn_searchbymgr" class="btn btn-danger" />
+	<br/>-->
+	
+
+      
+      <h1 class="m-0">New Employee Information</h1>
+    </div>
+    <div>
+			 <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divScroll">
+              <table style="width: 100%;" id="tblData">
+			  
+                <thead>
+                <tr>
+                  <th>Emp Code</th>
+                  <th>Employee Name</th>
+                  <th>Date Of Birth</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>View</th>
+				</tr>
+				</thead>
+				<tbody>
+					{% for item in emp_primarydata %} 
+				
+				
+				<tr>
+                  <td>{{item[0]}}</td>
+                  <td>{{item[1]}}</td>
+                  <td>{{item[3]}}</td>
+                  <td>{{item[4]}}</td>
+                  <td>{{item[5]}}</td>					
+                  <td><a href="seeverempdata?empcode={{item[0]}}">View</a></td>
+                </tr>
+						
+			  {% endfor %} 
+				</tbody>
+			  </table>
+			 </div>
+				  
+	</div>
+  </div>
+
+  
+  <!-- /.content-wrapper -->
+  <!--<footer class="main-footer">
+   <strong>Copyright &copy; 
+    <script type="text/javascript">var year = new Date();document.write(year.getFullYear());</script>  <a href="https://transactglobal.com/">Transact BPO Services India Pvt Ltd </a>.</strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block">
+       <b>Version</b> 1.0.0-Beta   </div>
+  </footer>-->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<!-- <script src="plugins/jquery/jquery.min.js"></script> -->
+<!-- jQuery UI 1.11.4 -->
+<!-- <script src="plugins/jquery-ui/jquery-ui.min.js"></script> -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<!-- <script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script> -->
+<!-- <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link href="/resources/demos/style.css" rel="stylesheet" /> -->
+<!-- Bootstrap 4 -->
+<!-- <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+<!-- ChartJS -->
+<!-- <script src="plugins/chart.js/Chart.min.js"></script> -->
+<!-- Sparkline -->
+<!-- <script src="plugins/sparklines/sparkline.js"></script> -->
+<!-- JQVMap -->
+<!-- <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+<!-- jQuery Knob Chart -->
+<!-- <script src="plugins/jquery-knob/jquery.knob.min.js"></script> -->
+<!-- daterangepicker -->
+<!-- <script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script> -->
+<!-- Tempusdominus Bootstrap 4 -->
+<!-- <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script> -->
+<!-- Summernote -->
+<!-- <script src="plugins/summernote/summernote-bs4.min.js"></script> -->
+<!-- overlayScrollbars -->
+<!-- <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+<!-- AdminLTE App -->
+<script src="./static/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="dist/js/demo.js"></script> -->
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<!-- <script src="dist/js/pages/dashboard.js"></script> -->
+<!--
+<script>
+$(document).ready(function(){
+    $('#tblData').after('<div id="nav"></div>');
+    var rowsShown = 20;
+    var rowsTotal = $('#tblData tbody tr').length;
+    var numPages = rowsTotal/rowsShown;
+    for(i = 0;i < numPages;i++) {
+        var pageNum = i + 1;
+        $('#nav').append('<a href="#" rel="'+i+'">'+pageNum+'</a> ');
+    }
+    $('#tblData tbody tr').hide();
+    $('#tblData tbody tr').slice(0, rowsShown).show();
+    $('#nav a:first').addClass('active');
+    $('#nav a').bind('click', function(){
+
+        $('#nav a').removeClass('active');
+        $(this).addClass('active');
+        var currPage = $(this).attr('rel');
+        var startItem = currPage * rowsShown;
+        var endItem = startItem + rowsShown;
+        $('#tblData tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).
+        css('display','table-row').animate({opacity:1}, 300);
+    });
+});
+</script>-->
+
+
+<script>
+/*
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} */
+</script>
+
+
+		
+<script>
+
+	//Pagination
+	function pageloader()
+	{
+		var pnum=document.getElementById('pgnum').value;
+		window.location='paginationload?pgnum='+pnum;
+	}
+	
+	debugger;
+	const urlParams = new URLSearchParams(window.location.search);
+	const myParam = urlParams.get('pgnum');
+	const month = urlParams.get('month');
+	const year = urlParams.get('year');
+	const secode = urlParams.get('secode');
+	const procnm = urlParams.get('procnm');
+	const mgrnm = urlParams.get('mgrnm');
+	if(myParam!=null)
+	{
+		document.getElementById('pgnum').value=myParam;
+	}
+	if(month!=null)
+	{
+		document.getElementById('mon').value=month;
+	}
+	if(secode!=null)
+	{
+		document.getElementById('secode').value=secode;
+	}
+	if(procnm!=null)
+	{
+		document.getElementById('procnm').value=procnm;
+	}
+	if(mgrnm!=null)
+	{
+		document.getElementById('mgrnm').value=mgrnm;
+	}
+	if(year!=null)
+	{
+		document.getElementById('year').value=year;
+	}
+	
+			
+				
+			
+			
+</script>
+<!-- jQuery -->
+<script src="./static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="./static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="./static/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="./static/plugins/toastr/toastr.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./static/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="./static/dist/js/demo.js"></script>
+
+<script src="{{ url_for('static', filename='restapi.js') }}"></script>
+<script>
+	debugger;
+	//$('td:nth-child(38),th:nth-child(90)').hide();
+</script>
+
+</body>
+</html>

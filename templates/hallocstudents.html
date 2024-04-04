@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Mentors Management</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="./static/assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="./static/css/bootstrap.css" rel="stylesheet" />
+        <link href="./static/css/dashboard.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      
+  <style>
+    table, th, td {
+              border:1px solid rgb(241, 235, 235);
+              text-align: center;            
+
+            }
+            th{
+              /* background-color: #234027; */
+              color:white;
+              text-align: center;
+			  min-width:100px;
+              
+            }
+
+            .divScroll {
+              padding-left:1% ;
+			/*overflow:scroll;*/
+			width: 1200px;
+			  height: 600px;
+			}
+
+
+             .bg-darkblue {
+				 background-color: #3459E9 !important;
+				 opacity: 1!important;
+			 }
+
+             .border-darkblue {
+				 border-color: #3459E9 !important;
+			 }
+			 
+            .fs-7 {
+            font-size: 0.75rem !important;
+            }
+
+            .fs-8 {
+            font-size: 0.55rem !important;
+            }
+</style>
+    </head>
+    <body>
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper" >
+                <div class="sidebar-heading text-break border-bottom bg-light text-center">
+                    <a href="attdashboard"><img src="./static/images/logo.png" alt="logo" class="img-fluid" style="max-width: 12rem; height: 4rem;"></a>
+                </div>
+                <div class="list-group list-group-flush text-start" style="font-size:13px;height:700px;overflow:scroll;overflow-x: hidden;">
+                  
+                  
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="hodhome" style="color:black;"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="hmentors" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> Mentors</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 bg-primary text-white p-3" href="hallocstudents" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> Allocate Students</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="hmentorapplist" style="color:black;"><i class="fa fa-th" aria-hidden="true"></i> Mentor Approvals</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="login" style="color:black;"><i class="fa fa-bookmark" aria-hidden="true"></i> Logout</a>               
+                      
+                     
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div class="col-lg-10 col-xs-12">
+                <!-- Top navigation-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn btn-light shadow-none btn-sm" id="sidebarToggle">
+                             <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                               
+                                <li class="nav-item text-center">
+                                  <a class="nav-link bg-danger" aria-current="page" href="login">
+                                      <i class="fas fa-sign-out-alt text-white"></i>
+                                  </a>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    <h4 class="my-4">Student Allocation Management</h4>
+					
+                    <div class="row gap-2">
+                        <div class="col-md-8 fs-7">
+                            <label for="ru_uname">Mentor Name :</label>
+                            <select name="mname" id="mname" class="form-control shadow-none">
+                                    <option>Select Mentor</option>
+                                    {% for val in mendata %}
+                                    <option>{{val[0]}}</option>
+                                    {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-8 fs-7">
+                            <label for="lang">Student USN :</label>
+                            <select name="usn" id="usn" class="form-control shadow-none">
+                                    <option>Select USN</option>
+                                    {% for val in studata %}
+                                    <option>{{val[0]}}</option>
+                                    {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="w-100"></div>
+                        <div class="col-md-8">
+                            <div class="btn-group w-100 gap-2">
+								
+								 <input type="button" class="btn btn-danger col-4 form-control fs-7" id="btn_addstumentor" value="Allocate Mentor" />
+                <button type="button" class="btn btn-danger col-4 form-control fs-7" id="btn_clearstumentor">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+                    {% if stumendata is defined and stumendata|length > 0 %}
+                    
+                    <h6> Mentors Allocation for Students</h6>
+                    <div  class="col-lg-8 col-md-8 col-sm-12 col-xs-12 fs-7">
+                        <table style="width: 100%;">
+                        
+                          <thead class="bg-darkblue text-white border-darkblue">
+                          <tr class="fs-7">
+                            <th>ID</th>
+                            <th>USN</th>
+                            <th>Student Name</th>
+                            <th>Mentor Name</th>
+                            <th></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                                {% for val in stumendata %}
+                                <tr>
+                                    <td>{{val[0]}}</td>
+                                    <td>{{val[1]}}</td>
+                                    <td>{{val[2]}}</td>
+                                    <td>{{val[3]}}</td>
+                                   <!-- <td><a href="roleedit<i class="fa fa-edit" aria-hidden="true" style="color:red"></i></td>-->
+                                    <td><a href="stumentordelete?id={{val[0]}}"><i class="fa fa-trash" aria-hidden="true" style="color:red"></i></a></td>
+                                </tr>
+                                            
+                                {% endfor %}
+                              
+                          </tbody>
+                        </table>
+                    </div>
+                    {% endif %}	
+                </div>
+            </div>
+        </div>
+		
+
+<script src="./static/masterrestapi.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="./static/js/bootstrap.js"></script>
+        <!-- Core theme JS-->
+        <script src="./static/js/dashboard.js"></script>
+	
+    </body>
+</html>
